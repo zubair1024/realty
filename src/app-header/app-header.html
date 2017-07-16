@@ -1,26 +1,332 @@
 <template>
-<!--HEADER START-->
-<header id="header" class="page-topbar">
-    <div class="navbar-fixed">
-        <nav id="headerNavBar">
-            <div class="nav-wrapper">
-                <h1 class="logo-wrapper">
-                    <h1 class="logo-wrapper hide-on-med-and-down"><a href="index.html" class="brand-logo darken-1"><img src="images/logo/turquoise-sm.png" alt="razrlab logo"></a> <span class="logo-text">RAZRLAB</span></h1>
-                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="javascript:void(0);"  click.delegate="toggleFullScreen()" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+    <!--HEADER START-->
+    <header id="header" class="header--minimal">
+        <div class="header__top">
+            <div class="container">
+                <ul class="top-nav">
+                    <!-- <li class="dropdown top-nav__guest">
+                        <a data-toggle="dropdown" href="">Register</a>
+
+                        <form class="dropdown-menu stop-propagate">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email Address">
+                                <i class="form-group__bar"></i>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password">
+                                <i class="form-group__bar"></i>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password">
+                                <i class="form-group__bar"></i>
+                            </div>
+
+                            <p><small>By Signing up with Roost, you're agreeing to our <a href="">terms and conditions</a>.</small></p>
+
+                            <button class="btn btn-primary btn-block m-t-10 m-b-10">Register</button>
+
+                            <div class="text-center"><small><a href="">Are you an Agent?</a></small></div>
+
+                            <div class="top-nav__auth">
+                                <span>or</span>
+
+                                <div>Sign in using</div>
+
+                                <a href="" class="mdc-bg-blue-500">
+                                        <i class="zmdi zmdi-facebook"></i>
+                                    </a>
+
+                                <a href="" class="mdc-bg-cyan-500">
+                                        <i class="zmdi zmdi-twitter"></i>
+                                    </a>
+
+                                <a href="" class="mdc-bg-red-400">
+                                        <i class="zmdi zmdi-google"></i>
+                                    </a>
+                            </div>
+
+                        </form>
+                    </li> -->
+
+                    <!-- <li class="dropdown top-nav__guest">
+                        <a data-toggle="dropdown" href="" data-rmd-action="switch-login">Login</a>
+
+                        <div class="dropdown-menu">
+                            <div class="tab-content">
+                                <form class="tab-pane active in fade" id="top-nav-login">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Email Address">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-block m-t-10 m-b-10">Login</button>
+
+                                    <div class="text-center">
+                                        <a href="#top-nav-forgot-password" data-toggle="tab"><small>Forgot email/password?</small></a>
+                                    </div>
+
+                                    <div class="top-nav__auth">
+                                        <span>or</span>
+
+                                        <div>Sign in using</div>
+
+                                        <a href="" class="mdc-bg-blue-500">
+                                                <i class="zmdi zmdi-facebook"></i>
+                                            </a>
+
+                                        <a href="" class="mdc-bg-cyan-500">
+                                                <i class="zmdi zmdi-twitter"></i>
+                                            </a>
+
+                                        <a href="" class="mdc-bg-red-400">
+                                                <i class="zmdi zmdi-google"></i>
+                                            </a>
+                                    </div>
+                                </form>
+
+                                <form class="tab-pane fade forgot-password" id="top-nav-forgot-password">
+                                    <a href="#top-nav-login" class="top-nav__back" data-toggle="tab"></a>
+
+                                    <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Emaill Address">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+
+                                    <button class="btn btn-warning btn-block">Reset Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li> -->
+
+                    <li class="pull-right top-nav__icon">
+                        <a href=""><i class="zmdi zmdi-facebook"></i></a>
                     </li>
-                </ul>
-                 <ul class="right">
-                    <li>
-                       <input id="universal-search" style="width: 100%;" />
+                    <li class="pull-right top-nav__icon">
+                        <a href=""><i class="zmdi zmdi-twitter"></i></a>
                     </li>
-                     <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                    <li class="pull-right top-nav__icon">
+                        <a href=""><i class="zmdi zmdi-google"></i></a>
                     </li>
+
+                    <li class="pull-right hidden-xs"><span><i class="zmdi zmdi-email"></i>contact@realty.com</span></li>
+                    <li class="pull-right hidden-xs"><span><i class="zmdi zmdi-phone"></i>Call us now on 000-000-000-0000</span></li>
                 </ul>
             </div>
-        </nav>
-    </div>
-</header>
-<!--HEADER END-->
+        </div>
+
+        <div class="header__main">
+            <div class="container">
+                <a class="logo" href="index.html">
+                    <!-- <img src="img/logo.png" alt=""> -->
+                    <div class="logo__text">
+                        <span>Realty</span>
+                        <span>This is a placeholder for the logo</span>
+                    </div>
+                </a>
+
+                <div class="navigation-trigger visible-xs visible-sm" data-rmd-action="block-open" data-rmd-target=".navigation">
+                    <i class="zmdi zmdi-menu"></i>
+                </div>
+
+                <ul class="navigation">
+                    <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+
+                    <li class="active navigation__dropdown">
+                        <a route-href="route: home">Home</a>
+
+                        <!-- <ul class="navigation__drop-menu">
+                            <li><a href="after-login.html">After Login</a></li>
+                            <li class="active"><a href="home-alternative.html">Home Alternative</a></li>
+                            <li><a href="dashboard/index.html">Dashboard</a></li>
+                        </ul> -->
+                    </li>
+
+                    <!-- <li class="navigation__dropdown">
+                        <a href="" class="prevent-default">Listings</a>
+
+                        <ul class="navigation__drop-menu">
+                            <li><a href="listings-grid.html">Grid view</a></li>
+                            <li><a href="listings-list.html">List view</a></li>
+                            <li><a href="listings-map.html">Map view</a></li>
+                            <li><a href="listing-detail.html">Listing Detail</a></li>
+                        </ul>
+                    </li> -->
+
+
+                    <li><a route-href="route: submit">Submit</a></li>
+
+                    <!-- <li class="navigation__dropdown">
+                        <a href="mortgage.html">Mortgages</a>
+
+                        <ul class="navigation__drop-menu">
+                            <li><a href="mortgage-detail.html">Mortgage Detail</a></li>
+                            <li><a href="mortgage-detail-reviews.html">Mortgage Reviews</a></li>
+                            <li><a href="mortgage-detail-disclaimer.html">Mortgage Disclaimer</a></li>
+                        </ul>
+                    </li> -->
+
+                    <!-- <li class="navigation__dropdown">
+                        <a href="agents.html">Agents</a>
+
+                        <ul class="navigation__drop-menu">
+                            <li><a href="agent-detail.html">Agent Detail</a></li>
+                            <li><a href="agent-detail-properties.html">Agent Properties</a></li>
+                            <li><a href="agent-detail-reviews.html">Agent Reviews</a></li>
+                        </ul>
+                    </li> -->
+
+                    <li><a route-href="route: contact">Contact</a></li>
+
+                    <!-- <li class="navigation__dropdown">
+                        <a href="" class="prevent-default">More</a>
+
+                        <ul class="navigation__drop-menu navigation__drop-menu--right">
+                            <li><a href="profile.html">Profile Private</a></li>
+                            <li><a href="profile-public.html">Profile Public</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="blog-details.html">Blog Detail</a></li>
+                            <li><a href="neighborhood-guide.html">Neighborhood Guide</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="email/listing-mail.html">Email Template</a></li>
+                            <li><a href="404.html">Error - 404</a></li>
+                            <li><a href="empty-page.html">Empty Page</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="header__search container">
+            <form>
+                <div class="search">
+                    <div class="search__type dropdown">
+                        <a href="" data-toggle="dropdown">Rent</a>
+
+                        <div class="dropdown-menu">
+                            <div>
+                                <input type="radio" name="property-type" value="rent">
+                                <span>Rent</span>
+                            </div>
+                            <div>
+                                <input type="radio" name="property-type" value="buy">
+                                <span>Buy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search__body">
+                        <input type="text" class="form-control search__input" placeholder="Enter any Neighorhood, Feature, Zip Code" data-rmd-action="advanced-search-open">
+
+                        <div class="search__advanced">
+                            <div class="col-sm-6">
+                                <div class="form-group form-group--float">
+                                    <input type="text" class="form-control" value="New York, NY">
+                                    <label>Location</label>
+                                    <i class="form-group__bar"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Ownership Type</label>
+
+                                    <select class="select2">
+                                            <option value="">Single Family Home</option>
+                                            <option value="">Condo</option>
+                                            <option value="">Townhome</option>
+                                            <option value="">Apartment Community</option>
+                                            <option value="">Room</option>
+                                        </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-group--range">
+                                    <label>Price Range</label>
+                                    <div class="input-slider-values clearfix">
+                                        <div class="pull-left"><span>$</span><span id="property-price-upper"></span></div>
+                                        <div class="pull-right"><span>$</span><span id="property-price-lower"></span></div>
+                                    </div>
+                                    <div id="property-price-range"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group form-group--range">
+                                    <label>Area Size (sqft)</label>
+                                    <div class="input-slider-values clearfix">
+                                        <div class="pull-left" id="property-area-upper"></div>
+                                        <div class="pull-right" id="property-area-lower"></div>
+                                    </div>
+                                    <div id="property-area-range"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bedrooms</label>
+                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-beds" id="bed1">1
+                                            </label>
+                                        <label class="btn active">
+                                                <input type="checkbox" name="advanced-search-beds" id="bed2" checked>2
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-beds" id="bed3">3
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-beds" id="bed4">4
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-beds" id="bed5">4+
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Bathrooms</label>
+                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                        <label class="btn active">
+                                                <input type="checkbox" name="advanced-search-baths" id="bath1" checked>1
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-baths" id="bath2">2
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-baths" id="bath3">3
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-baths" id="bath4">4
+                                            </label>
+                                        <label class="btn">
+                                                <input type="checkbox" name="advanced-search-baths" id="bath5">4+
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 m-t-10">
+                                <button class="btn btn-primary">Search</button>
+                                <button class="btn btn-link" data-rmd-action="advanced-search-close">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div> -->
+    </header>
+    <!--HEADER END-->
 </template>

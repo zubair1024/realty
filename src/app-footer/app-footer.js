@@ -1,3 +1,3 @@
 export class AppFooter {
-    constructor() { }
+  constructor() { }
 }
