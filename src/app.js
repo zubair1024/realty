@@ -9,6 +9,8 @@ export class App {
   }
 
   configureRouter(config, router) {
+    config.addPipelineStep('postRender', postRenderStep);
+
     config.map([
       {
         route: ['', 'home'],
@@ -32,3 +34,32 @@ export class App {
     this.router = router;
   }
 }
+
+class postRenderStep {
+  run(navigationInstruction, next) {
+    if (navigationInstruction.config && navigationInstruction.config.name) {
+      this.setActiveTab(navigationInstruction.config.name);
+    }
+    return next();
+  }
+
+  setActiveTab(name) {
+    $('#home-link').parent().removeClass('active');
+    $('#contact-link').parent().removeClass('active');
+    $('#submit-link').parent().removeClass('active');
+    switch (name) {
+    case 'submit':
+      $('#submit-link').parent().addClass('active');
+      break;
+    case 'contact':
+      $('#contact-link').parent().addClass('active');
+      break;
+    case 'home':
+      $('#home-link').parent().addClass('active');
+      break;
+    default:
+      break;
+    }
+  }
+}
+
