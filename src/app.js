@@ -29,6 +29,12 @@ export class App {
         name: 'contact',
         moduleId: 'contact/contact',
         title: 'Contact Us'
+      },
+      {
+        route: 'faq',
+        name: 'faq',
+        moduleId: 'faq/faq',
+        title: 'FAQ'
       }
     ]);
     this.router = router;
@@ -47,12 +53,16 @@ class postRenderStep {
     $('#home-link').parent().removeClass('active');
     $('#contact-link').parent().removeClass('active');
     $('#submit-link').parent().removeClass('active');
+    $('#faq-link').parent().removeClass('active');
     switch (name) {
     case 'submit':
       $('#submit-link').parent().addClass('active');
       break;
     case 'contact':
       $('#contact-link').parent().addClass('active');
+      break;
+    case 'faq':
+      $('#faq-link').parent().addClass('active');
       break;
     case 'home':
       $('#home-link').parent().addClass('active');
