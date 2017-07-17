@@ -35,6 +35,12 @@ export class App {
         name: 'faq',
         moduleId: 'faq/faq',
         title: 'FAQ'
+      },
+      {
+        route: 'tnc',
+        name: 'tnc',
+        moduleId: 'tnc/tnc',
+        title: 'Terms and Conditions'
       }
     ]);
     this.router = router;
