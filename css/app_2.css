@@ -2329,7 +2329,7 @@
 .submit-ticker {
   color: #fff;
   text-align: center;
-  background: #3f51b5 url(../img/patterns/header_pattern_2.png) center left repeat-x;
+  background: #000 url(../img/patterns/header_pattern_2.png) center left repeat-x;
 }
 
 .submit-ticker > p {
