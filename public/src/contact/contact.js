@@ -3,6 +3,7 @@ export class Contact {
   }
 
   attached() {
+    //load map
     this.googleMap = new google.maps.Map(document.getElementById('listing-map'), {
       zoom: 4,
       center: { lat: 25, lng: 55 },

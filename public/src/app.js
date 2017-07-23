@@ -49,6 +49,9 @@ export class App {
 
 class postRenderStep {
   run(navigationInstruction, next) {
+    //scroll to top
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+
     if (navigationInstruction.config && navigationInstruction.config.name) {
       this.setActiveTab(navigationInstruction.config.name);
     }
