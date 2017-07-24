@@ -18,7 +18,6 @@ export class Submit {
   }
 
   validateStep(step, callback) {
-    console.log(step);
     console.log(this.model);
     let valid = true;
     switch (step) {
@@ -28,8 +27,8 @@ export class Submit {
         valid = false;
         alert('Please fill in the ADDRESS field');
       } else {
-        valid = false;
         if (!this.model.location.unit || this.model.location.unit === '') {
+          valid = false;
           alert('Please fill in the UNIT field');
         } else {
           !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
@@ -97,10 +96,26 @@ export class Submit {
 
   finalValidationAnSubmit() {
     let me = this;
-    me.validateStep(1, (f1)=>{
-      f1 && me.validateStep(2, (f2)=>{
-        f2 && me.validateStep(3, (f3)=>{
-          f3 &&  $('.submit-property__steps a[href="#submit-property-4"]').tab('show');
+    me.validateStep(1, (f1) => {
+      console.log('step 1 is valid');
+      f1 && me.validateStep(2, (f2) => {
+        console.log('step 2 is valid');
+        f2 && me.validateStep(3, (f3) => {
+          console.log('step 3 is valid');
+          $.ajax({
+            url: '/property',
+            method: 'POST',
+            body: {
+              name: 'asdasd'
+            },
+            success: function(data) {
+              console.log('data');
+              f3 && $('#submitted').tab('show');
+            },
+            error: function(err) {
+              console.log(err);
+            }
+          });
         });
       });
     });

@@ -6,6 +6,28 @@ export class App {
   constructor(aurelia, router) {
     this.aurelia = aurelia;
     this.router = router;
+
+    //Ajax Prefilters for the widgets
+    $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+      options.url = App.config.baseUrl + options.url;
+      options.error = function(data) {
+        switch (data.status) {
+        case 0:
+          break;
+
+        case 401:
+          break;
+
+        case 413:
+          break;
+
+        default:
+          if (data.statusText) {
+            }
+          break;
+        }
+      };
+    });
   }
 
   configureRouter(config, router) {
