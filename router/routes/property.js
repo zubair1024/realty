@@ -11,6 +11,9 @@ router
     })
     .post('/', function (req, res) {
         console.log(req.body);
+        db.Property(req.body).save(function (err, data) {
+            res.status(200).send({"status": "success", "message": "Successful DELETE" });
+        });
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });

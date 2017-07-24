@@ -24,52 +24,52 @@ export class Submit {
       //location information
     case 1:
       if (!this.model.location.address || this.model.location.address === '') {
-        valid = false;
-        alert('Please fill in the ADDRESS field');
-      } else {
-        if (!this.model.location.unit || this.model.location.unit === '') {
           valid = false;
-          alert('Please fill in the UNIT field');
+          alert('Please fill in the ADDRESS field');
         } else {
-          !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
+          if (!this.model.location.unit || this.model.location.unit === '') {
+            valid = false;
+            alert('Please fill in the UNIT field');
+          } else {
+            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
+          }
         }
-      }
       break;
       //contact information
     case 2:
       if (!this.model.contact.name || this.model.contact.name === '') {
-        valid = false;
-        alert('Please fill in the NAME field');
-      } else {
-        if (!this.model.contact.email || this.model.contact.email === '') {
           valid = false;
-          alert('Please fill in the EMAIL field');
+          alert('Please fill in the NAME field');
         } else {
-          if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
+          if (!this.model.contact.email || this.model.contact.email === '') {
             valid = false;
-            alert('Please fill in the CONTACT NUMBER field');
+            alert('Please fill in the EMAIL field');
           } else {
-            !callback && $('.submit-property__steps a[href="#submit-property-3"]').tab('show');
+            if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
+              valid = false;
+              alert('Please fill in the CONTACT NUMBER field');
+            } else {
+              !callback && $('.submit-property__steps a[href="#submit-property-3"]').tab('show');
+            }
           }
         }
-      }
       break;
       //property information
     case 3:
       if (!this.model.information.title || this.model.information.title === '') {
-        valid = false;
-        alert('Please fill in the TITLE field');
-      } else {
-        if (!this.model.information.description || this.model.information.description === '') {
           valid = false;
-          alert('Please fill in the DESCRIPTION field');
+          alert('Please fill in the TITLE field');
         } else {
-          if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
+          if (!this.model.information.description || this.model.information.description === '') {
             valid = false;
-            alert('Please fill in the SQUARE FEET field');
+            alert('Please fill in the DESCRIPTION field');
+          } else {
+            if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
+              valid = false;
+              alert('Please fill in the SQUARE FEET field');
+            }
           }
         }
-      }
       break;
     default:
         //do nothing
@@ -105,9 +105,7 @@ export class Submit {
           $.ajax({
             url: '/property',
             method: 'POST',
-            body: {
-              name: 'asdasd'
-            },
+            data: me.model,
             success: function(data) {
               console.log('data');
               f3 && $('#submitted').tab('show');

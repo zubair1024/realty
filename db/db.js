@@ -94,6 +94,7 @@ module.exports = {
     //Load Models
     loadModels: function () {
         this.User = require("./models/User");
+        this.Property = require("./models/Property");
     },
 
     //logger

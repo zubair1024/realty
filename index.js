@@ -2,12 +2,15 @@ const express = require('express'),
   http = require('http'),
   cors = require("cors"),
   compression = require("compression"),
+  db = require("./db/db"),
   router = express.Router();
 
 global.config = require('./config');
 
 //Intialize express application
 global.app = express();
+
+global.db = db;
 
 //increase the number sockets
 http.globalAgent.maxSockets = Infinity;
@@ -75,5 +78,9 @@ var routes = require("./router/router");
 /**
  * Listen to port for web access
  */
-http.createServer(app).listen(config.listener.ports.web);
-console.log('Application is running on port ' + config.listener.ports.web);
+
+db.checkConnection(() => {
+  db.loadModels();
+  http.createServer(app).listen(config.listener.ports.web);
+  console.log('Application is running on port ' + config.listener.ports.web);
+});

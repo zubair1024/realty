@@ -1,12 +1,12 @@
 "use strict";
 
 const test = require("./routes/test"),
-    user = require("./routes/user");
+    property = require("./routes/property");
 
 //load test routes
 app.use("/test", test);
 //load user routes
-app.use("/user", user);
+app.use("/property", property);
 
 /**
  * Routes for Shadow Message Handler Integration

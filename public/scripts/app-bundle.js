@@ -22,7 +22,7 @@ define('app',['exports', 'aurelia-framework', 'aurelia-router'], function (expor
       this.router = router;
 
       $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-        options.url = App.config.baseUrl + options.url;
+        options.url = AppState.config.baseUrl + options.url;
         options.error = function (data) {
           switch (data.status) {
             case 0:
@@ -456,9 +456,7 @@ define('submit/submit',['exports'], function (exports) {
             $.ajax({
               url: '/property',
               method: 'POST',
-              body: {
-                name: 'asdasd'
-              },
+              data: me.model,
               success: function success(data) {
                 console.log('data');
                 f3 && $('#submitted').tab('show');

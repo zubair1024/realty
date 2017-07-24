@@ -15,10 +15,10 @@ var mongoose = require("mongoose"),
 
 // db.odataServer.resource('users', scheme);
 
-var userSchema = new Schema(scheme);
+var propertySchema = new Schema(scheme);
 
 // on every save, add the date
-userSchema.pre("save", function(next) {
+propertySchema.pre("save", function(next) {
   // get the current date
   var currentDate = new Date();
 
@@ -32,6 +32,6 @@ userSchema.pre("save", function(next) {
 });
 
 //Add pagination plugin
-userSchema.plugin(mongoosePaginate);
+propertySchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("Property", propertySchema);

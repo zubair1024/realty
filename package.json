@@ -18,8 +18,8 @@
   "homepage": "https://github.com/zubair1024/realty#readme",
   "dependencies": {
     "body-parser": "1.17.2",
-    "compression": "1.7.0",
-    "cors": "2.8.4",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
     "express": "4.15.3",
     "mongoose": "4.11.3",
     "mongoose-paginate": "5.0.3"

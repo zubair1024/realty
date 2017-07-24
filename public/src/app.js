@@ -9,7 +9,7 @@ export class App {
 
     //Ajax Prefilters for the widgets
     $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-      options.url = App.config.baseUrl + options.url;
+      options.url = AppState.config.baseUrl + options.url;
       options.error = function(data) {
         switch (data.status) {
         case 0:
