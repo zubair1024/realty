@@ -3,27 +3,14 @@
 const express = require('express'),
     router = express.Router();
 
-
-//test home routes
-router
-    .get('/', function (req, res) {
-        res.json({ "data": "I’m Bender, baby! Oh god, please insert liquor!!!" });
-    })
-    .post('/', function (req, res) {
-        let property = req.body;
-
-        //persist the information
-        db.Property(property).save(function (err, data) {
-            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
-        });
-
-        // setup email data with unicode symbols
-        let mailOptions = {
-            from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
-            to: 'za@razrlab.com, zubair1024@gmail.com', // list of receivers
-            subject: 'New Lead ✔', // Subject line
-            text: JSON.stringify(property), // plain text body
-            html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+const sendLeadMail = function (property) {
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
+        to: 'za@razrlab.com', // list of receivers
+        subject: 'New Lead ✔', // Subject line
+        text: JSON.stringify(property), // plain text body
+        html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
 
                     <head>
@@ -302,17 +289,30 @@ router
                         </table>
                     </body>
                     </html>` // html body
-        };
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message %s sent: %s', info.messageId, info.response);
+    };
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+    });
+    //test end
+}
+
+//test home routes
+router
+    .get('/', function (req, res) {
+        res.json({ "data": "I’m Bender, baby! Oh god, please insert liquor!!!" });
+    })
+    .post('/', function (req, res) {
+        let property = req.body;
+
+        //persist the information
+        db.Property(property).save(function (err, data) {
+            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
         });
-        //test end
-
-
+        sendLeadMail(property);
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
