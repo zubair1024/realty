@@ -83,7 +83,7 @@ define('app',['exports', 'aurelia-framework', 'aurelia-router'], function (expor
     }
 
     postRenderStep.prototype.run = function run(navigationInstruction, next) {
-      $('html, body').animate({ scrollTop: 0 }, 'slow');
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
 
       if (navigationInstruction.config && navigationInstruction.config.name) {
         this.setActiveTab(navigationInstruction.config.name);
