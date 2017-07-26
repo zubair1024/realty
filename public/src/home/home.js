@@ -3,59 +3,63 @@ export class Home {
 
   }
   attached() {
-    function castParallax() {
-        var opThresh = 350;
-        var opFactor = 750;
+	// Pretty simple huh?
+	    var scene = document.getElementById('scene');
+	    var parallax = new Parallax(scene);
 
-        window.addEventListener('scroll', function(event) {
-    var top = this.pageYOffset;
+//     function castParallax() {
+//         var opThresh = 350;
+//         var opFactor = 750;
 
-    var layers = document.getElementsByClassName('parallax');
-    var layer, speed, yPos;
-    for (var i = 0; i < layers.length; i++) {
-      layer = layers[i];
-      speed = layer.getAttribute('data-speed');
-      var yPos = -(top * speed / 100);
-      layer.setAttribute(
-        'style',
-        'transform: translate3d(0px, ' + yPos + 'px, 0px)'
-      );
-    }
-  });
-      }
+//         window.addEventListener('scroll', function(event) {
+//     var top = this.pageYOffset;
 
-    function dispelParallax() {
-  $('#nonparallax').css('display', 'block');
-  $('#parallax').css('display', 'none');
-}
+//     var layers = document.getElementsByClassName('parallax');
+//     var layer, speed, yPos;
+//     for (var i = 0; i < layers.length; i++) {
+//       layer = layers[i];
+//       speed = layer.getAttribute('data-speed');
+//       var yPos = -(top * speed / 100);
+//       layer.setAttribute(
+//         'style',
+//         'transform: translate3d(0px, ' + yPos + 'px, 0px)'
+//       );
+//     }
+//   });
+//       }
 
-    function castSmoothScroll() {
-  $.srSmoothscroll({
-    step: 80,
-    speed: 300,
-    ease: 'linear'
-  });
-}
+//     function dispelParallax() {
+//   $('#nonparallax').css('display', 'block');
+//   $('#parallax').css('display', 'none');
+// }
 
-    function startSite() {
-  var platform = navigator.platform.toLowerCase();
-  var userAgent = navigator.userAgent.toLowerCase();
+//     function castSmoothScroll() {
+//   $.srSmoothscroll({
+//     step: 80,
+//     speed: 300,
+//     ease: 'linear'
+//   });
+// }
 
-  if (platform.indexOf('ipad') != -1 || platform.indexOf('iphone') != -1) {
-    dispelParallax();
-  } else if (
-    platform.indexOf('win32') != -1 ||
-    platform.indexOf('linux') != -1
-  ) {
-    castParallax();
-    if ($.browser.webkit) {
-      castSmoothScroll();
-    }
-  } else {
-    castParallax();
-  }
-}
+//     function startSite() {
+//   var platform = navigator.platform.toLowerCase();
+//   var userAgent = navigator.userAgent.toLowerCase();
 
-    document.body.onload = startSite();
+//   if (platform.indexOf('ipad') != -1 || platform.indexOf('iphone') != -1) {
+//     dispelParallax();
+//   } else if (
+//     platform.indexOf('win32') != -1 ||
+//     platform.indexOf('linux') != -1
+//   ) {
+//     castParallax();
+//     if ($.browser.webkit) {
+//       castSmoothScroll();
+//     }
+//   } else {
+//     castParallax();
+//   }
+// }
+
+//     document.body.onload = startSite();
   }
 }
