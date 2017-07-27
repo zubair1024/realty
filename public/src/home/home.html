@@ -1,41 +1,18 @@
 <template>
     <require from="./home.css"></require>
+    <div class="bg-style">
+        <div id="scene" class="scene">
+            <!-- <div data-depth="1.00"><img class="img-responsive" src="img/clouds.png"></div>   -->
+            <!-- <div data-depth="0.80"><img class="img-responsive" src="img/clouds.png"></div>    -->
+            <!-- <div data-depth="0.60"><img class="img-responsive" src="img/clouds.png"></div>   -->
 
-    <!-- <div class="keyart" id="nonparallax">
+            <!-- <div data-depth="0.20"><img class="img-responsive" src="img/clouds.png"></div>    -->
+            <div data-depth="0.00"><img class="img-responsive" src="img/2.png"></div>
+            <div data-depth="0.40"><img class="img-responsive" src="img/clouds.png"></div>
+        </div>
     </div>
-    <div class="keyart" id="parallax">
-        <div class="keyart_layer parallax" id="keyart-0" data-speed="2"></div>
-        <div class="keyart_layer parallax" id="keyart-1" data-speed="5"></div>
-        <div class="keyart_layer parallax" id="keyart-2" data-speed="11"></div>
-        <div class="keyart_layer parallax" id="keyart-3" data-speed="16"></div>
-        <div class="keyart_layer parallax" id="keyart-4" data-speed="26"></div>
-        <div class="keyart_layer parallax" id="keyart-5" data-speed="36"></div>
-        <div class="keyart_layer parallax" id="keyart-6" data-speed="49"></div>
-        <div class="keyart_layer" id="keyart-scrim"></div>
-        <div class="keyart_layer parallax" id="keyart-7" data-speed="69"></div>
-        <div class="keyart_layer" id="keyart-8" data-speed="100">
-            <div id="logo-box">
-                <h1>REALTY</h1>
-                <h2>This is a placeholder for the logo</h2>
-            </div>
-
-        </div>
-    </div> -->
-
-     <div id="container" class="container">
-            <div id="scene" class="scene">
-                <div data-depth="1.00"><img src="img/jbOO94A.png"></div>
-                <div data-depth="0.80"><img src="img/layer2.png"></div>
-                <div data-depth="0.60"><img src="img/layer3.png"></div>
-                <div data-depth="0.40"><img src="img/layer4.png"></div>
-                <div data-depth="0.20"><img src="img/layer5.png"></div>
-                <div data-depth="0.00"><img src="img/jbOO94A.png"></div>
-            </div>
-        </div>
 
     <div id="maincontain">
-        <div id="main"></div>
-
         <section class="section submit-ticker">
             <p>Are you looking to sell your valuable property? Realty is your destination!</p>
 
@@ -143,5 +120,158 @@
                 </div>
             </div>
         </section>
-        <a class="btn brn-sm btn-default btn-static" style="position: fixed; bottom: 75%; right: 0px;" route-href="route: submit">SELL NOW</a>
+        <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                  <img src="img/clock.png">
+                </div>
+                <!-- cd-timeline-img -->
+                <div class="cd-timeline-content">
+                    <div row="row">
+                        <div class="col-sm-7">
+                            <h2>Listed at $ 100,000</h2>
+                            <p style="font-size: 1.5em;">
+                                Joe put their property on with an agent for $100,000 on their advice.
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                        </div>
+                    </div>
+                    <span class="cd-date">Month 1</span>
+                </div>
+                <!-- cd-timeline-content -->
+            </div>
+            <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/clock.png">
+                </div>
+                <!-- cd-timeline-img -->
+
+                <div class="cd-timeline-content">
+                    <div row="row">
+                        <div class="col-sm-7">
+                            <h2>reduced to $ 95,000</h2>
+                            <p style="font-size: 1.5em;">
+                                After 3 months with no interest they reduce to $ 95,000
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                        </div>
+                    </div>
+                    <span class="cd-date">Month 3</span>
+                </div>
+                <!-- cd-timeline-content -->
+            </div>
+            <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/clock.png">
+                </div>
+                <!-- cd-timeline-img -->
+
+                <div class="cd-timeline-content">
+                    <div row="row">
+                        <div class="col-sm-7">
+                            <h2>reduced to $ 90,000</h2>
+                            <p style="font-size: 1.5em;">
+                                After 6 months they reduce again to $ 90,000 and achieve a sale.
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                        </div>
+                    </div>
+                    <span class="cd-date">Month 6</span>
+                </div>
+                <!-- cd-timeline-content -->
+            </div>
+            <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-location">
+                    <img src="img/clock.png">
+                </div>
+                <!-- cd-timeline-img -->
+
+                <div class="cd-timeline-content">
+                    <div row="row">
+                        <div class="col-sm-7">
+                            <h2>reduced to $ 85,000</h2>
+                            <p style="font-size: 1.5em;">
+                                After 3 months their sale falls through. He put their house on for $ 85,000
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                        </div>
+                    </div>
+                    <span class="cd-date">Month 9</span>
+            </div>
+            <!-- cd-timeline-content -->
+    </div>
+    <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-location">
+            <img src="img/clock.png">
+        </div>
+        <!-- cd-timeline-img -->
+
+        <div class="cd-timeline-content">
+            <div row="row">
+                <div class="col-sm-7">
+                    <h2>Sold for $ 80,000</h2>
+                    <p style="font-size: 1.5em;">
+                        He sell their house for $ 80,000 and it completes 3 months later
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                </div>
+            </div>
+            <span class="cd-date">Month 12</span>
+        </div>
+        <!-- cd-timeline-content -->
+    </div>
+    <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+        <div class="cd-timeline-img cd-movie">
+            <img src="img/clock.png">
+        </div>
+        <!-- cd-timeline-img -->
+
+        <div class="cd-timeline-content">
+            <div row="row">
+                <div class="col-sm-7">
+                    <h2>Net total $ 66,575</h2>
+                    <p style="font-size: 1.5em;">
+                        He did not actually net the full amount of a sale. He is mistaken if he thinks that sale amount is what he got. He has forgotten that the following fees apply :
+                        <ul>
+                            <li><b>$ 8400</b> mortage</li>
+                            <li><b>$ 1200</b> council tax.</li>
+                            <li><b>$ 1500</b> utility bills</li>
+                            <li><b>$ 1500</b> Charges</li>
+                            <li><b>$ 750</b> Agent Fees</li>
+                            <li><b>$ 75</b> EPC</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <img class="img-responsive" src="img/OAI50P1.png" alt="" width="200" height="200">
+                </div>
+            </div>
+            <span class="cd-date">Month 12</span>
+        </div>
+        <!-- cd-timeline-content -->
+    </div>
+    <!-- cd-timeline-block -->
+    </section>
+    <!-- cd-timeline -->
+    <a class="btn brn-sm btn-default btn-static" style="position: fixed; bottom: 75%; right: 0px;" route-href="route: submit">SELL NOW</a>
 </template>

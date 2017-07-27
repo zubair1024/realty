@@ -3,63 +3,33 @@ export class Home {
 
   }
   attached() {
-	// Pretty simple huh?
-	    var scene = document.getElementById('scene');
-	    var parallax = new Parallax(scene);
+    // Pretty simple huh?
+    let scene = document.getElementById('scene');
+    let parallax = new Parallax(scene);
 
-//     function castParallax() {
-//         var opThresh = 350;
-//         var opFactor = 750;
+    var timelineBlocks = $('.cd-timeline-block'),
+      offset = 0.8;
 
-//         window.addEventListener('scroll', function(event) {
-//     var top = this.pageYOffset;
+    //hide timeline blocks which are outside the viewport
+    hideBlocks(timelineBlocks, offset);
 
-//     var layers = document.getElementsByClassName('parallax');
-//     var layer, speed, yPos;
-//     for (var i = 0; i < layers.length; i++) {
-//       layer = layers[i];
-//       speed = layer.getAttribute('data-speed');
-//       var yPos = -(top * speed / 100);
-//       layer.setAttribute(
-//         'style',
-//         'transform: translate3d(0px, ' + yPos + 'px, 0px)'
-//       );
-//     }
-//   });
-//       }
+    //on scolling, show/animate timeline blocks when enter the viewport
+    $(window).on('scroll', function() {
+      (!window.requestAnimationFrame)
+        ? setTimeout(function() { showBlocks(timelineBlocks, offset); }, 100)
+        : window.requestAnimationFrame(function() { showBlocks(timelineBlocks, offset); });
+    });
 
-//     function dispelParallax() {
-//   $('#nonparallax').css('display', 'block');
-//   $('#parallax').css('display', 'none');
-// }
+    function hideBlocks(blocks, offset) {
+      blocks.each(function() {
+        ($(this).offset().top > $(window).scrollTop() + $(window).height() * offset) && $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+      });
+    }
 
-//     function castSmoothScroll() {
-//   $.srSmoothscroll({
-//     step: 80,
-//     speed: 300,
-//     ease: 'linear'
-//   });
-// }
-
-//     function startSite() {
-//   var platform = navigator.platform.toLowerCase();
-//   var userAgent = navigator.userAgent.toLowerCase();
-
-//   if (platform.indexOf('ipad') != -1 || platform.indexOf('iphone') != -1) {
-//     dispelParallax();
-//   } else if (
-//     platform.indexOf('win32') != -1 ||
-//     platform.indexOf('linux') != -1
-//   ) {
-//     castParallax();
-//     if ($.browser.webkit) {
-//       castSmoothScroll();
-//     }
-//   } else {
-//     castParallax();
-//   }
-// }
-
-//     document.body.onload = startSite();
+    function showBlocks(blocks, offset) {
+      blocks.each(function() {
+        ($(this).offset().top <= $(window).scrollTop() + $(window).height() * offset && $(this).find('.cd-timeline-img').hasClass('is-hidden')) && $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+      });
+    }
   }
 }
