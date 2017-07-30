@@ -48,7 +48,7 @@ const sendLeadMail = function (property) {
     let mailOptions = {
         from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
         to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com', // list of receivers
-        subject: 'New Lead ✔', // Subject line
+        subject: `New Lead - ${property.information.title}`, // Subject line
         text: JSON.stringify(property), // plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
@@ -364,7 +364,6 @@ router
     .post('/', upload.any(), function (req, res) {
         let property = JSON.parse(req.body.model);
         property.information.images = [];
-        debugger;
         if (req.files && req.files.length) {
             for (let i = 0; i < req.files.length; i++) {
                 //check if it is the title deed
@@ -376,10 +375,10 @@ router
             }
         }
         //persist the information
-        // db.Property(property).save(function (err, data) {
-        //     res.status(200).send({ "status": "success", "message": "Successful DELETE" });
-        // });
-        sendLeadMail(property);
+        db.Property(property).save(function (err, data) {
+            sendLeadMail(property);
+            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
+        });
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
