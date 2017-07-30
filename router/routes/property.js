@@ -4,21 +4,42 @@ const express = require('express'),
     router = express.Router();
 
 
+var cloudinaryStorage = require('multer-storage-cloudinary');
+
 /**
 * Multer file upload setup
 */
 const multer = require("multer"),
     path = require("path");
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "public/");
-    },
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, "temp/");
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.originalname);
+//     }
+// });
+//Cloudinary API setup  
+var cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: 'the-property-buying-company',
+    api_key: '432744376324187',
+    api_secret: 'PHIRKMIGWHTi35xti7JT4rvbI3Q'
+});
+const storage = cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: 'folder-name',
+    cloud_name: 'the-property-buying-company',
+    api_key: '432744376324187',
+    api_secret: 'PHIRKMIGWHTi35xti7JT4rvbI3Q',
+    allowedFormats: ['jpg', 'png'],
     filename: function (req, file, cb) {
-        cb(null, file.originalname);
+        cb(undefined, file.originalname);
     }
 });
 const upload = multer({ storage: storage });
+
 
 
 

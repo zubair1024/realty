@@ -13,12 +13,12 @@ global.app = express();
 global.db = db;
 
 //Cloudinary API setup  
-const cloudinary = require('cloudinary');
-global.cloudinary = cloudinary.config({
-  cloud_name: 'the-property-buying-company',
-  api_key: '432744376324187',
-  api_secret: 'PHIRKMIGWHTi35xti7JT4rvbI3Q'
-});
+// const cloudinary = require('cloudinary');
+// global.cloudinary = cloudinary.config({
+//   cloud_name: 'the-property-buying-company',
+//   api_key: '432744376324187',
+//   api_secret: 'PHIRKMIGWHTi35xti7JT4rvbI3Q'
+// });
 
 //increase the number sockets
 http.globalAgent.maxSockets = Infinity;
