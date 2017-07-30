@@ -302,6 +302,19 @@ const sendLeadMail = function (property) {
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <tr>
+                                                        <td valign="top" width="100%" style="line-height: 10px; font-size: 0" height="40;">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <img src="${property.information.titleDeed}">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                        ${property.information.images.map(image => `<img src="${image}">`).join('\n      ')}
+                                                        </td>
+                                                    </tr>
                                                 </table>
                                             </td>
                                         </tr>
@@ -345,14 +358,28 @@ router
     .get('/', function (req, res) {
         res.json({ "data": "I’m Bender, baby! Oh god, please insert liquor!!!" });
     })
+    /**
+     * Posting a new property
+     */
     .post('/', upload.any(), function (req, res) {
-        let property = req.body;
+        let property = JSON.parse(req.body.model);
+        property.information.images = [];
         debugger;
+        if (req.files && req.files.length) {
+            for (let i = 0; i < req.files.length; i++) {
+                //check if it is the title deed
+                if (req.files[i].url && req.files[i].url.match('deed')) {
+                    property.information.titleDeed = req.files[i].url;
+                } else {
+                    property.information.images.push(req.files[i].url);
+                }
+            }
+        }
         //persist the information
         // db.Property(property).save(function (err, data) {
         //     res.status(200).send({ "status": "success", "message": "Successful DELETE" });
         // });
-        // sendLeadMail(property);
+        sendLeadMail(property);
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
