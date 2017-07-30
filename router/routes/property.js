@@ -3,6 +3,25 @@
 const express = require('express'),
     router = express.Router();
 
+
+/**
+* Multer file upload setup
+*/
+const multer = require("multer"),
+    path = require("path");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/uploads/users/");
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
+
+
+
 const sendLeadMail = function (property) {
     // setup email data with unicode symbols
     let mailOptions = {
@@ -316,6 +335,40 @@ router
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
+    })
+    /**
+  * Upload an avatar
+  */
+    .post("/photo", upload.array("images"), function (req, res, next) {
+        if (req.files && req.files.length > 0) {
+            let file = req.files[0], imageUrl;
+
+            //check file type
+            if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+                db.User.findOneAndUpdate(
+                    { "loginName": req.body.user },
+                    { "imageUrl": file.originalname },
+                    function (err, user) {
+                        if (err) {
+                            res.status(500).send({
+                                status: "error",
+                                message: "There was an error updating the user."
+                            });
+                            throw err;
+                        } else {
+                            res.status(200).send({
+                                status: "success",
+                                message: "User avatar updated successfully"
+                            });
+                        }
+                    }
+                );
+            } else {
+                res
+                    .status(500)
+                    .send({ status: "error", message: "Invalid file type." });
+            }
+        }
     });
 
 module.exports = router;
