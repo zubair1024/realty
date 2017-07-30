@@ -210,21 +210,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-group--float form-group--float-center">Property Deed
-                                    <input type="file" multiple accept="image/*" files.bind="model.deed">
+                                    <input type="file" multiple accept="image/*" files.bind="deed">
                                     <i class="form-group__bar"></i>
                                 </div>
                                 <ul>
-                                    <li repeat.for="file of model.deed | fileListToArray">
+                                    <li repeat.for="file of deed | fileListToArray">
                                         <h6>${file.name}: ${file.type} ${file.size / 1000} kb</h6>
                                         <img src.bind="file | blobToUrl" width="100" height="100"><img> Last Modified: ${file.lastModifiedDate}
                                     </li>
                                 </ul>
                                 <div class="form-group form-group--float form-group--float-center">Property Images (jpg or png)
-                                    <input type="file" multiple accept="image/*" files.bind="model.selectedFiles">
+                                    <input type="file" multiple accept="image/*" files.bind="selectedFiles">
                                     <i class="form-group__bar"></i>
                                 </div>
                                 <ul>
-                                    <li repeat.for="file of model.selectedFiles | fileListToArray">
+                                    <li repeat.for="file of selectedFiles | fileListToArray">
                                         <h6>${file.name}: ${file.type} ${file.size / 1000} kb</h6>
                                         <img src.bind="file | blobToUrl" width="100" height="100"><img> Last Modified: ${file.lastModifiedDate}
                                     </li>

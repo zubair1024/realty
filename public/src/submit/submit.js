@@ -11,7 +11,9 @@ export class Submit {
     }
   }
 
+  //placeholders
   selectedFiles;
+  titleDeed;
 
   constructor() {
   }
@@ -48,11 +50,11 @@ export class Submit {
           alert('Please fill in the EMAIL field');
         } else {
           if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
-            valid = false;
-            alert('Please fill in the CONTACT NUMBER field');
-          } else {
-            !callback && $('.submit-property__steps a[href="#submit-property-3"]').tab('show');
-          }
+              valid = false;
+              alert('Please fill in the CONTACT NUMBER field');
+            } else {
+              !callback && $('.submit-property__steps a[href="#submit-property-3"]').tab('show');
+            }
         }
       }
       break;
@@ -67,9 +69,9 @@ export class Submit {
           alert('Please fill in the DESCRIPTION field');
         } else {
           if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
-            valid = false;
-            alert('Please fill in the SQUARE FEET field');
-          }
+              valid = false;
+              alert('Please fill in the SQUARE FEET field');
+            }
         }
       }
       break;
@@ -104,55 +106,19 @@ export class Submit {
         console.log('step 2 is valid');
         f2 && me.validateStep(3, (f3) => {
           console.log('step 3 is valid');
-          debugger;
-          if (images && images[0]) {
-            let image = images[0];
-            let filename;
-
-            console.log(images[0]);
-
-            switch (image.type) {
-            case 'image/png':
-              filename = this.model.loginName + '.png';
-              break;
-
-            case 'image/jpeg':
-              filename = this.model.loginName + '.jpg';
-              break;
-
-            default:
-              Materialize.toast('Please upload a .jpg or .png file', 3000);
-              break;
-            }
-
-            //if filename exists
-            if (filename) {
-              let me = this;
-              //form-data
-              let formData = new FormData();
-              formData.append('images', image, filename);
-              formData.append('user', this.model.loginName);
-
-              //use FETCH API to POST image
-
-              this.httpclient
-                .fetch(App.config.apiUrl + '/user/photo', {
-                  method: 'POST',
-                  body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                  localStorage.removeItem('currentUser');
-                  me.aurelia.setRoot('login/login');
-                })
-                .catch(error => Materialize.toast(error.message, 5000));
-            }
-          }
           //neeed to do something aboutt the images before doing this
+          let formData = new FormData();
+          formData.append('images', me.deed[0], `deed_${me.model.information.title}.jpg`);
+          for (let i = 0; i < me.selectedFiles.length; i++) {
+            formData.append('images', me.selectedFiles[i], `property${i}_${me.model.information.title}.jpg`);
+          }
+          formData.append('model', JSON.stringify(me.model));
           $.ajax({
             url: '/property',
             method: 'POST',
-            data: me.model,
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function(data) {
               console.log('data');
               f3 && $('#submitted').tab('show');

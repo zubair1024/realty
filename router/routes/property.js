@@ -12,7 +12,7 @@ const multer = require("multer"),
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "public/uploads/users/");
+        cb(null, "public/");
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -324,14 +324,14 @@ router
     .get('/', function (req, res) {
         res.json({ "data": "I’m Bender, baby! Oh god, please insert liquor!!!" });
     })
-    .post('/', function (req, res) {
+    .post('/', upload.any(), function (req, res) {
         let property = req.body;
-
+        debugger;
         //persist the information
-        db.Property(property).save(function (err, data) {
-            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
-        });
-        sendLeadMail(property);
+        // db.Property(property).save(function (err, data) {
+        //     res.status(200).send({ "status": "success", "message": "Successful DELETE" });
+        // });
+        // sendLeadMail(property);
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
