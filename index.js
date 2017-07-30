@@ -2,6 +2,7 @@ const express = require('express'),
   http = require('http'),
   cors = require("cors"),
   compression = require("compression"),
+  cloudinary = require('cloudinary'),
   db = require("./db/db"),
   router = express.Router();
 
@@ -17,6 +18,14 @@ http.globalAgent.maxSockets = Infinity;
 
 // GZIP all assets
 app.use(compression());
+
+
+//Cloudinary API setup  
+cloudinary.config({ 
+  cloud_name: 'the-property-buying-company', 
+  api_key: '432744376324187', 
+  api_secret: 'PHIRKMIGWHTi35xti7JT4rvbI3Q' 
+});
 
 
 /**
