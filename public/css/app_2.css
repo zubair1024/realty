@@ -241,7 +241,7 @@
   }
 
   .navigation__dropdown:hover > a {
-    background-color: #303F9F;
+    background-color: #0E95D8;
     border-radius: 2px 2px 0 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding-right: 20px;
@@ -1462,7 +1462,7 @@
 /* Footer */
 
 #footer {
-  background-color: #3949AB;
+  background-color: #17a2e7;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.8);
 }
@@ -2329,7 +2329,7 @@
 .submit-ticker {
   color: #fff;
   text-align: center;
-  background: #000 url(../img/patterns/header_pattern_2.png) center left repeat-x;
+  background: rgb(212, 75, 78) url(../img/patterns/header_pattern_2.png) center left repeat-x;
 }
 
 .submit-ticker > p {
@@ -2598,7 +2598,7 @@ a.text-muted:focus {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #3F51B5;
+  background-color: #17A2E7;
   z-index: 100;
   text-align: center;
   position: fixed;

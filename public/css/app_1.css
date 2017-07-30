@@ -12901,7 +12901,7 @@ a {
 
 #header {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  background-color: #3F51B5;
+  background-color: #17a2e7;
 }
 
 #header.affix {
@@ -12925,7 +12925,7 @@ a {
 }
 
 .header__top {
-  background-color: #3949AB;
+  background-color: #0e95d8;
 }
 
 @media (max-width: 767px) {
