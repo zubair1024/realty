@@ -9,8 +9,6 @@ export default function processUglifyLib() {
       'js/parallax/parallax.min.js',
       'vendors/jquery/dist/jquery.min.js',
       'vendors/bootstrap/dist/js/bootstrap.min.js',
-      'vendors/parallax-background-master/js/parallax-background.js',
-      'vendors/Waves/dist/waves.min.js',
       'js/app.min.js'
     ])
     .pipe(concat('lib.min.js'))
