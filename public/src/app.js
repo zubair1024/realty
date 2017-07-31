@@ -63,6 +63,12 @@ export class App {
         name: 'tnc',
         moduleId: 'tnc/tnc',
         title: 'Terms and Conditions'
+      },
+      {
+        route: 'policy',
+        name: 'policy',
+        moduleId: 'policy/policy',
+        title: 'Privacy Policy'
       }
     ]);
     this.router = router;
