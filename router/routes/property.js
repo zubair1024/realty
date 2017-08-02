@@ -47,7 +47,7 @@ const sendLeadMail = function (property) {
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
-        to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com,vimalvaya27@gmail.com,steve_crasto@hotmail.com,simplysunil78@hotmail.com', // list of receivers
+        to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com', // list of receivers
         subject: `New Lead - ${property.information.title}`, // Subject line
         text: JSON.stringify(property), // plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
