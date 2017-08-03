@@ -50,11 +50,11 @@ export class Submit {
           alert('Please fill in the EMAIL field');
         } else {
           if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
-              valid = false;
-              alert('Please fill in the CONTACT NUMBER field');
-            } else {
-              !callback && $('.submit-property__steps a[href="#submit-property-3"]').tab('show');
-            }
+            valid = false;
+            alert('Please fill in the CONTACT NUMBER field');
+          } else {
+            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
+          }
         }
       }
       break;
@@ -64,14 +64,14 @@ export class Submit {
         valid = false;
         alert('Please fill in the TITLE field');
       } else {
-        if (!this.model.information.description || this.model.information.description === '') {
+        if (!this.model.information.view || this.model.information.view === '') {
           valid = false;
-          alert('Please fill in the DESCRIPTION field');
+          alert('Please fill in the VIEW field');
         } else {
           if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
-              valid = false;
-              alert('Please fill in the SQUARE FEET field');
-            }
+            valid = false;
+            alert('Please fill in the SQUARE FEET field');
+          }
         }
       }
       break;

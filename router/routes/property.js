@@ -48,7 +48,7 @@ const sendLeadMail = function (property) {
     let mailOptions = {
         from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
         to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com', // list of receivers
-        subject: `New Lead - ${property.information.title}`, // Subject line
+        subject: `New Lead - ${property.location.address}`, // Subject line
         text: JSON.stringify(property), // plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
