@@ -68,6 +68,16 @@
                                     <i class="form-group__bar"></i>
                                 </div>
 
+                                  <div class="form-group">
+                                    <label>Property Type</label>
+
+                                    <select class="select2" value.bind="model.property.type">
+                                            <option value="apartment">Apartment</option>
+                                            <option value="townhouse">Townhouse</option>
+                                            <option value="villa">Villa</option>
+                                        </select>
+                                </div>
+
                                 <div class="form-group form-group--float m-b-5">
                                     Unit/Floor/Block
                                     <input type="text" class="form-control text-center" value.bind="model.location.unit">
@@ -84,16 +94,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Property Type</label>
-
-                                    <select class="select2" value.bind="model.property.type">
-                                            <option value="studio">Studio</option>
-                                            <option value="apartment">Apartment</option>
-                                            <option value="townhouse">Townhouse</option>
-                                            <option value="villa">Villa</option>
-                                        </select>
-                                </div>
+                              
 
                                 <div class="form-group form-group--float form-group--float-center">Title Deed Number
                                     <input type="text" class="form-control text-center" value.bind="model.information.title">
@@ -159,27 +160,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>No. of Floors</label>
-                                    <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                        <label class="btn active" click.delegate="toggleFloors('1')">
-                                                <input type="radio" name="inner-search-beds">1
-                                            </label>
-                                        <label class="btn" click.delegate="toggleFloors('2')">
-                                                <input type="radio" name="inner-search-beds">2
-                                            </label>
-                                        <label class="btn" click.delegate="toggleFloors('3')">
-                                                <input type="radio" name="inner-search-beds">3
-                                            </label>
-                                        <label class="btn" click.delegate="toggleFloors('4')">
-                                                <input type="radio" name="inner-search-beds">4
-                                            </label>
-                                        <label class="btn" click.delegate="toggleFloors('4+')">
-                                                <input type="radio" name="inner-search-beds">4+
-                                            </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label>Parking Space</label>
                                     <div class="btn-group btn-group-justified" data-toggle="buttons">
                                         <label class="btn active" click.delegate="toggleParkingSpaces('1')">
@@ -218,9 +198,18 @@
                                         <!-- Last Modified: ${file.lastModifiedDate} -->
                                     </li>
                                 </ul>
-                                <a data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" click.delegate="finalValidationAnSubmit(images)">
+                                 <div class="form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                                <input type="checkbox" checked.bind="tncCheck">
+                                                <i class="input-helper"></i>
+                                                I agree to the <a route-href="route: tnc" target="_blank">Terms &amp; Conditions</a>
+                                            </label>
+                                    </div>
+                                </div>
+                                <button data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" disabled.bind="!tncCheck"  click.delegate="finalValidationAnSubmit(images)" >
                                         <i class="zmdi zmdi-check"></i>
-                                    </a>
+                                    </button>
                             </form>
                         </div>
                     </div>
