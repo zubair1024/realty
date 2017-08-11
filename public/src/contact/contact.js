@@ -1,12 +1,23 @@
 export class Contact {
+
+  model = {}
+
+  marker;
+
+  position = {
+    lat: 25.0968872,
+    lng: 55.1646739
+  }
+
   constructor() {
   }
 
   attached() {
+    let me = this;
     //load map
     this.googleMap = new google.maps.Map(document.getElementById('listing-map'), {
-      zoom: 4,
-      center: { lat: 25, lng: 55 },
+      zoom: 12,
+      center: me.position,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: true,
       scrollwheel: true,
@@ -18,6 +29,12 @@ export class Contact {
       navigationControlOptions: {
         style: google.maps.NavigationControlStyle.SMALL
       }
+    });
+
+    this.marker = new google.maps.Marker({
+      position: me.position,
+      title: 'Cash For Property',
+      map: me.googleMap
     });
   }
 }

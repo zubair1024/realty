@@ -1,10 +1,9 @@
 <template>
-    <!-- <require from="./contacts.css"></require> -->
     <section class="section">
         <div class="container">
             <header class="section__title">
-                <h2>Duis mollisest non commodo luctus nisierat porttito</h2>
-                <small>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit liberopharetra augueullamcorper nulla non metus auctor fringillaet magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare Cras justo odio, dapibus ac facilisis in, egestas eget quam.</small>
+                <h2>Contact Information</h2>
+                 <small>Please feel free to contact us anytime</small> 
             </header>
 
             <div class="contact">
@@ -17,14 +16,7 @@
                         <div class="contact__info">
                             <ul class="rmd-contact-list">
                                 <li class="rmd-contact-list__title"><i class="zmdi zmdi-home"></i>Dubai Office</li>
-                                <li><i class="zmdi zmdi-pin"></i>230 Mira 2 Dubailand, <br>560030</li>
-                                <li><i class="zmdi zmdi-phone"></i>000-000-0000</li>
-                                <li><i class="zmdi zmdi-email"></i>info@cash4properties.ae</li>
-                            </ul>
-
-                            <ul class="rmd-contact-list">
-                                <li class="rmd-contact-list__title"><i class="zmdi zmdi-home"></i>UK Office</li>
-                                <li><i class="zmdi zmdi-pin"></i>7094 Blah Blah Mountain View, <br>123</li>
+                                <li><i class="zmdi zmdi-pin"></i> Building 4<br>Emaar Business Park</li>
                                 <li><i class="zmdi zmdi-phone"></i>000-000-0000</li>
                                 <li><i class="zmdi zmdi-email"></i>info@cash4properties.ae</li>
                             </ul>
@@ -41,22 +33,22 @@
                     <div class="col-sm-6">
                         <form class="contact__form">
                             <div class="form-group form-group--light form-group--float">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value.bind="model.name">
                                 <label>Name</label>
                                 <i class="form-group__bar"></i>
                             </div>
                             <div class="form-group form-group--light form-group--float">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value.bind="model.email">
                                 <label>Email Address</label>
                                 <i class="form-group__bar"></i>
                             </div>
                             <div class="form-group form-group--light form-group--float">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value.bind="model.contactNo">
                                 <label>Contact Number</label>
                                 <i class="form-group__bar"></i>
                             </div>
                             <div class="form-group form-group--light form-group--float">
-                                <textarea class="form-control textarea-autoheight"></textarea>
+                                <textarea class="form-control textarea-autoheight" value.bind="model.message"></textarea>
                                 <label>Message</label>
                                 <i class="form-group__bar"></i>
                             </div>
