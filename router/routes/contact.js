@@ -3,6 +3,10 @@
 const express = require('express'),
     router = express.Router();
 
+
+
+
+
 /**
 * Multer file upload setup
 */
@@ -33,12 +37,12 @@ const upload = multer({ storage: storage });
 
 
 
-const sendLeadMail = function (property) {
+const sendLeadMail = function (query) {
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
         to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com', // list of receivers
-        subject: `New Lead - ${property.location.address}`, // Subject line
+        subject: `New Query - ${query.name}`, // Subject line
         text: JSON.stringify(property), // plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
@@ -147,7 +151,7 @@ const sendLeadMail = function (property) {
                                         <tr>
                                             <td>
                                                 <a href="">
-                                                        <img src="http://res.cloudinary.com/razrlab/image/upload/v1500962075/ONZ74M0_ye5h7l.jpg" width="650" alt="">
+                                                        <img src="http://res.cloudinary.com/the-property-buying-company/image/upload/v1502448404/OH5IPV0_w8kqzd.jpg" width="650" alt="">
                                                     </a>
                                             </td>
                                         </tr>
@@ -163,32 +167,7 @@ const sendLeadMail = function (property) {
                                                         </td>
                                                     </tr>
 
-                                                    <tr>
-                                                        <td valign="top" width="100%" style="line-height: 30px; font-size: 0" height="30;">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-family: Arial, sans-serif; font-size: 13px; color: #545454; text-align: left; line-height: 20px;">
-                                                            <table>
-                                                                <tr>
-                                                                    <td>
-                                                                        <b>Location Information</b>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Address:</b></td>
-                                                                    <td>${property.location.address}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Unit:</b></td>
-                                                                    <td>${property.location.unit}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Currently Living:</b></td>
-                                                                    <td>${property.location.currentlyLiving}</td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
+                                
 
 
                                                     <tr>
@@ -199,77 +178,32 @@ const sendLeadMail = function (property) {
                                                             <table>
                                                                 <tr>
                                                                     <td>
-                                                                        <b>Property Information</b>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Title:</b></td>
-                                                                    <td>${property.information.title}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Description:</b></td>
-                                                                    <td>${property.information.description}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Size (Square Feet):</b></td>
-                                                                    <td>${property.information.squareFeet}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Built Year:</b></td>
-                                                                    <td>${property.information.year}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Bedrooms:</b></td>
-                                                                    <td>${property.information.bedrooms}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Bathrooms:</b></td>
-                                                                    <td>${property.information.bathrooms}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Floors:</b></td>
-                                                                    <td>${property.information.floors}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Parking Spaces:</b></td>
-                                                                    <td>${property.information.parkingSpaces}</td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-
-
-
-                                                    <tr>
-                                                        <td valign="top" width="100%" style="line-height: 30px; font-size: 0" height="30;">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="font-family: Arial, sans-serif; font-size: 13px; color: #545454; text-align: left; line-height: 20px;">
-                                                            <table>
-                                                                <tr>
-                                                                    <td>
-                                                                        <b>Contact Information</b>
+                                                                        <b>Query Information</b>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Name:</b></td>
-                                                                    <td>${property.contact.name}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Organization:</b></td>
-                                                                    <td>${property.contact.organization}</td>
+                                                                    <td>${query.name}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Email:</b></td>
-                                                                    <td>${property.contact.email}</td>
+                                                                    <td>${query.email}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td><b>Contact No:</b></td>
-                                                                    <td>${property.contact.contactNo}</td>
+                                                                    <td><b>Size (Square Feet):</b></td>
+                                                                    <td>${query.contactNo}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Built Year:</b></td>
+                                                                    <td>${query.message}</td>
                                                                 </tr>
                                                             </table>
                                                         </td>
                                                     </tr>
+
+
+
+                                        
 
                                                     <tr>
                                                         <td valign="top" width="100%" style="line-height: 60px; font-size: 0" height="60;">&nbsp;</td>
@@ -277,7 +211,7 @@ const sendLeadMail = function (property) {
 
                                                     <tr>
                                                         <td style="text-align: center;">
-                                                            <a href="tel:${property.contact.contactNo}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
+                                                            <a href="tel:${query.contactNo}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
                                                                 <font color="#fff">Call Now</font>
                                                             </a>
                                                         </td>
@@ -287,22 +221,9 @@ const sendLeadMail = function (property) {
                                                     </tr>
                                                     <tr>
                                                         <td style="text-align: center;">
-                                                            <a href="mailto:${property.contact.email}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
+                                                            <a href="mailto:${query.email}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
                                                                 <font color="#fff">Email Now</font>
                                                             </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td valign="top" width="100%" style="line-height: 10px; font-size: 0" height="40;">&nbsp;</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                            <img src="${property.information.titleDeed}">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="text-align: center;">
-                                                        ${property.information.images.map(image => `<img src="${image}">`).join('\n      ')}
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -343,69 +264,70 @@ const sendLeadMail = function (property) {
     //test end
 }
 
+
+
+
+
+
+
+
+
+
 //test home routes
 router
     .get('/', function (req, res) {
         res.json({ "data": "I’m Bender, baby! Oh god, please insert liquor!!!" });
     })
-    /**
-     * Posting a new property
-     */
-    .post('/', upload.any(), function (req, res) {
-        let property = JSON.parse(req.body.model);
-        property.information.images = [];
-        if (req.files && req.files.length) {
-            for (let i = 0; i < req.files.length; i++) {
-                //check if it is the title deed
-                if (req.files[i].url && req.files[i].url.match('deed')) {
-                    property.information.titleDeed = req.files[i].url;
-                } else {
-                    property.information.images.push(req.files[i].url);
-                }
-            }
-        }
-        //persist the information
-        db.Property(property).save(function (err, data) {
-            sendLeadMail(property);
-            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
-        });
+    .post('/', function (req, res) {
+        res.status(200).send({ "status": "success", "message": "Successful POST" });
     })
     .delete('/', function (req, res) {
         res.status(200).send({ "status": "success", "message": "Successful DELETE" });
-    })
-    /**
-  * Upload an avatar
-  */
-    .post("/photo", upload.array("images"), function (req, res, next) {
-        if (req.files && req.files.length > 0) {
-            let file = req.files[0], imageUrl;
-
-            //check file type
-            if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
-                db.User.findOneAndUpdate(
-                    { "loginName": req.body.user },
-                    { "imageUrl": file.originalname },
-                    function (err, user) {
-                        if (err) {
-                            res.status(500).send({
-                                status: "error",
-                                message: "There was an error updating the user."
-                            });
-                            throw err;
-                        } else {
-                            res.status(200).send({
-                                status: "success",
-                                message: "User avatar updated successfully"
-                            });
-                        }
-                    }
-                );
-            } else {
-                res
-                    .status(500)
-                    .send({ status: "error", message: "Invalid file type." });
-            }
-        }
     });
+
+/**
+ * Send quries from the user
+ */
+router.post('/query', function (req, res) {
+    console.log(req.body);
+});
+
+//some generic status routes
+router
+    .all('/404', function (req, res) {
+        res.sendStatus(404);
+    })
+    .all('/401', function (req, res) {
+        res.sendStatus(401);
+    })
+    .all('/500', function (req, res) {
+        res.sendStatus(500);
+    });
+
+router.get('/log', function (req, res) {
+    //log to cli
+    console.log(new Date());
+    //query parameter
+    console.log(req.query);
+    //body parameter
+    console.log(req.body);
+    //send status
+    res.status(200).send({
+        status: "status"
+    });
+});
+router.post('/log', function (req, res) {
+    //log to cli
+    //query parameter
+    console.log(req.query);
+    //body parameter
+    console.log(req.body);
+    //send status
+    res.status(200).send({
+        status: "status"
+    });
+});
+
+
 
 module.exports = router;

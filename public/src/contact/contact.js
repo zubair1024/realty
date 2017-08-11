@@ -37,4 +37,19 @@ export class Contact {
       map: me.googleMap
     });
   }
+
+  submit() {
+    let query  = this.model;
+    $.ajax({
+      url: '/contact/query',
+      method: 'POST',
+      data: query,
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+  }
 }
