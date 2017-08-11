@@ -39,6 +39,7 @@ export class Contact {
   }
 
   submit() {
+    this.submitted = true;
     let query  = this.model;
     $.ajax({
       url: '/contact/query',
@@ -46,6 +47,7 @@ export class Contact {
       data: query,
       success: function(data) {
         console.log(data);
+        alert('Your query has been submitted.');
       },
       error: function(err) {
         console.log(err);

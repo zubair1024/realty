@@ -4,9 +4,6 @@ const express = require('express'),
     router = express.Router();
 
 
-
-
-
 /**
 * Multer file upload setup
 */
@@ -43,7 +40,7 @@ const sendLeadMail = function (query) {
         from: '"The Property Buying Company" <thepropertybuyingcompanyae@gmail.com>', // sender address
         to: 'za@razrlab.com, jg@razrlab.com,ra@razrlab.com', // list of receivers
         subject: `New Query - ${query.name}`, // Subject line
-        text: JSON.stringify(property), // plain text body
+        text: JSON.stringify(query), // plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                     <!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
 
@@ -163,7 +160,7 @@ const sendLeadMail = function (query) {
 
                                                     <tr>
                                                         <td>
-                                                            <p style="font-family:Arial, sans-serif;font-size:18px; color: #000000; text-align: center; margin-bottom: 0; padding-bottom: 0;">We have a new lead!</p>
+                                                            <p style="font-family:Arial, sans-serif;font-size:18px; color: #000000; text-align: center; margin-bottom: 0; padding-bottom: 0;">We have a new query!</p>
                                                         </td>
                                                     </tr>
 
@@ -190,11 +187,11 @@ const sendLeadMail = function (query) {
                                                                     <td>${query.email}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td><b>Size (Square Feet):</b></td>
+                                                                    <td><b>Contact No:</b></td>
                                                                     <td>${query.contactNo}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td><b>Built Year:</b></td>
+                                                                    <td><b>Message:</b></td>
                                                                     <td>${query.message}</td>
                                                                 </tr>
                                                             </table>
@@ -264,15 +261,6 @@ const sendLeadMail = function (query) {
     //test end
 }
 
-
-
-
-
-
-
-
-
-
 //test home routes
 router
     .get('/', function (req, res) {
@@ -289,7 +277,10 @@ router
  * Send quries from the user
  */
 router.post('/query', function (req, res) {
-    console.log(req.body);
+    if (req.body) {
+        sendLeadMail(req.body);
+        res.status(200).send({});
+    }
 });
 
 //some generic status routes
