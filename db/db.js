@@ -95,6 +95,7 @@ module.exports = {
     loadModels: function () {
         this.User = require("./models/User");
         this.Property = require("./models/Property");
+        this.Contact = require("./models/Contact");
     },
 
     //logger

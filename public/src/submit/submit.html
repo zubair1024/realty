@@ -207,7 +207,7 @@
                                             </label>
                                     </div>
                                 </div>
-                                <button data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" disabled.bind="!tncCheck"  click.delegate="finalValidationAnSubmit(images)" >
+                                <button data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" disabled.bind="!tncCheck || submitted"  click.delegate="finalValidationAnSubmit(images)" >
                                         <i class="zmdi zmdi-check"></i>
                                     </button>
                             </form>

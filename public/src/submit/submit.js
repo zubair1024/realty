@@ -4,14 +4,17 @@ export class Submit {
     location: {},
     contact: {},
     information: {
-      type: 'studio',
+      type: 'apartment',
       bedrooms: '1',
       bathrooms: '1',
       parkingSpaces: '1'
     }
   }
 
+  //some flags
+  submitted = false;
   tncCheck = false;
+  contactSubmitted = false;
 
   //placeholders
   selectedFiles;
@@ -24,58 +27,73 @@ export class Submit {
   }
 
   validateStep(step, callback) {
-    console.log(this.model);
+    let me = this;
     let valid = true;
     switch (step) {
       //location information
     case 1:
       if (!this.model.location.address || this.model.location.address === '') {
+        valid = false;
+        alert('Please fill in the ADDRESS field');
+      } else {
+        if (!this.model.location.unit || this.model.location.unit === '') {
           valid = false;
-          alert('Please fill in the ADDRESS field');
+          alert('Please fill in the UNIT field');
         } else {
-          if (!this.model.location.unit || this.model.location.unit === '') {
-            valid = false;
-            alert('Please fill in the UNIT field');
-          } else {
-            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
-          }
+          !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
         }
+      }
       break;
       //contact information
     case 2:
       if (!this.model.contact.name || this.model.contact.name === '') {
+        valid = false;
+        alert('Please fill in the NAME field');
+      } else {
+        if (!this.model.contact.email || this.model.contact.email === '') {
           valid = false;
-          alert('Please fill in the NAME field');
+          alert('Please fill in the EMAIL field');
         } else {
-          if (!this.model.contact.email || this.model.contact.email === '') {
+          if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
             valid = false;
-            alert('Please fill in the EMAIL field');
+            alert('Please fill in the CONTACT NUMBER field');
           } else {
-            if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
-              valid = false;
-              alert('Please fill in the CONTACT NUMBER field');
-            } else {
-              !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
+            //send the contact discreetly
+            if (!me.contactSubmitted) {
+              me.contactSubmitted = true;
+              $.ajax({
+                url: '/contact/info',
+                method: 'POST',
+                data: me.model.contact,
+                success: function(data) {
+                  console.log('data');
+                },
+                error: function(err) {
+                  console.log(err);
+                }
+              });
             }
+            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
           }
         }
+      }
       break;
       //property information
     case 3:
       if (!this.model.information.title || this.model.information.title === '') {
+        valid = false;
+        alert('Please fill in the TITLE field');
+      } else {
+        if (!this.model.information.view || this.model.information.view === '') {
           valid = false;
-          alert('Please fill in the TITLE field');
+          alert('Please fill in the VIEW field');
         } else {
-          if (!this.model.information.view || this.model.information.view === '') {
+          if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
             valid = false;
-            alert('Please fill in the VIEW field');
-          } else {
-            if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
-              valid = false;
-              alert('Please fill in the SQUARE FEET field');
-            }
+            alert('Please fill in the SQUARE FEET field');
           }
         }
+      }
       break;
     default:
         //do nothing
@@ -111,9 +129,13 @@ export class Submit {
             console.log('step 3 is valid');
             //neeed to do something aboutt the images before doing this
             let formData = new FormData();
-            formData.append('images', me.deed[0], `deed_${me.model.information.title}.jpg`);
-            for (let i = 0; i < me.selectedFiles.length; i++) {
-              formData.append('images', me.selectedFiles[i], `property${i}_${me.model.information.title}.jpg`);
+            if (me.deed) {
+              formData.append('images', me.deed[0], `deed_${me.model.information.title}.jpg`);
+            }
+            if (me.selectedFiles && me.selectedFiles.length) {
+              for (let i = 0; i < me.selectedFiles.length; i++) {
+                formData.append('images', me.selectedFiles[i], `property${i}_${me.model.information.title}.jpg`);
+              }
             }
             formData.append('model', JSON.stringify(me.model));
             $.ajax({
