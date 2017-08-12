@@ -184,7 +184,7 @@ const sendLeadMail = function (property) {
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Currently Living:</b></td>
-                                                                    <td>${property.location.currentlyLiving}</td>
+                                                                    <td>${property.location.currentlyLiving? "Yes":"No"}</td>
                                                                 </tr>
                                                             </table>
                                                         </td>
@@ -215,8 +215,12 @@ const sendLeadMail = function (property) {
                                                                     <td>${property.information.squareFeet}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td><b>Built Year:</b></td>
-                                                                    <td>${property.information.year}</td>
+                                                                    <td><b>squareFeet:</b></td>
+                                                                    <td>${property.information.plotSize}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>View:</b></td>
+                                                                    <td>${property.information.view}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Bedrooms:</b></td>
@@ -225,10 +229,6 @@ const sendLeadMail = function (property) {
                                                                 <tr>
                                                                     <td><b>Bathrooms:</b></td>
                                                                     <td>${property.information.bathrooms}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b>Floors:</b></td>
-                                                                    <td>${property.information.floors}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Parking Spaces:</b></td>
@@ -364,6 +364,7 @@ router
                 }
             }
         }
+        console.log(property);
         //persist the information
         db.Property(property).save(function (err, data) {
             sendLeadMail(property);

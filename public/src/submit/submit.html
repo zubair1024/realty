@@ -71,7 +71,7 @@
                                   <div class="form-group">
                                     <label>Property Type</label>
 
-                                    <select class="select2" value.bind="model.property.type">
+                                    <select class="select2" value.bind="model.information.type">
                                             <option value="apartment">Apartment</option>
                                             <option value="townhouse">Townhouse</option>
                                             <option value="villa">Villa</option>
@@ -114,6 +114,11 @@
                                 
                                 <div class="form-group form-group--float form-group--float-center">Plot Size (if applicable)
                                     <input type="text" class="form-control text-center" value.bind="model.information.plotSize">
+                                    <i class="form-group__bar"></i>
+                                </div>
+
+                                <div class="form-group form-group--float m-b-5">Description
+                                    <input type="text" class="form-control text-center textarea-autoheight" value.bind="model.information.description">
                                     <i class="form-group__bar"></i>
                                 </div>
 
