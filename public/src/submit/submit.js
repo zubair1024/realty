@@ -49,16 +49,25 @@ export class Submit {
       if (!this.model.contact.name || this.model.contact.name === '') {
         valid = false;
         alert('Please fill in the NAME field');
+      } else if (!this.model.contact.email || this.model.contact.email === '') {
+        valid = false;
+        alert('Please fill in a valid EMAIL address');
+      } else if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
+        valid = false;
+        alert('Please fill in the CONTACT NUMBER field');
       } else {
-        if (!this.model.contact.email || this.model.contact.email === '') {
-          valid = false;
-          alert('Please fill in the EMAIL field');
+          //validate email
+        let atpos = this.model.contact.email.indexOf('@');
+        let dotpos = this.model.contact.email.lastIndexOf('.');
+          //check the @ and . positions
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= this.model.contact.email.length) {
+          alert('Please fill in a valid EMAIL address');
         } else {
-          if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
-            valid = false;
-            alert('Please fill in the CONTACT NUMBER field');
+          let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+          if (!this.model.contact.contactNo.match(phoneno)) {
+            alert('Please enter a valid contact number');
           } else {
-            //send the contact discreetly
+              //send the contact discreetly
             if (!me.contactSubmitted) {
               me.contactSubmitted = true;
               $.ajax({
