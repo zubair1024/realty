@@ -6,7 +6,7 @@ module.exports = {
         },
         //ports
         ports: {
-            web: 80
+            web: 81
         },
         //load balancer
         loadbalancer: {

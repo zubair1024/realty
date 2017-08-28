@@ -93,7 +93,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /**
  * setup the public directoy
  */
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
 
 /**
  * GET application routes
