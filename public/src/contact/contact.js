@@ -30,12 +30,6 @@ export class Contact {
         style: google.maps.NavigationControlStyle.SMALL
       }
     });
-
-    // this.marker = new google.maps.Marker({
-    //   position: me.position,
-    //   title: 'Cash For Property',
-    //   map: me.googleMap
-    // });
   }
 
   submit() {
