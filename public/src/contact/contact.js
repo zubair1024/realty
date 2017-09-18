@@ -31,11 +31,11 @@ export class Contact {
       }
     });
 
-    this.marker = new google.maps.Marker({
-      position: me.position,
-      title: 'Cash For Property',
-      map: me.googleMap
-    });
+    // this.marker = new google.maps.Marker({
+    //   position: me.position,
+    //   title: 'Cash For Property',
+    //   map: me.googleMap
+    // });
   }
 
   submit() {
