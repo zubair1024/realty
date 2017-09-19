@@ -1,7 +1,8 @@
 "use strict";
 
 const express = require('express'),
-    router = express.Router();
+    router = express.Router(),
+    request = require('request');
 
 /**
 * Multer file upload setup
@@ -184,7 +185,7 @@ const sendLeadMail = function (property) {
                                                                 </tr>
                                                                 <tr>
                                                                     <td><b>Currently Living:</b></td>
-                                                                    <td>${property.location.currentlyLiving? "Yes":"No"}</td>
+                                                                    <td>${property.location.currentlyLiving ? "Yes" : "No"}</td>
                                                                 </tr>
                                                             </table>
                                                         </td>
