@@ -182,6 +182,34 @@ define('app-footer/app-footer',["exports"], function (exports) {
     _classCallCheck(this, AppFooter);
   };
 });
+define('app-header/app-header',['exports', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFramework, _aureliaRouter) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AppHeader = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var AppHeader = exports.AppHeader = (_dec = (0, _aureliaFramework.inject)(_aureliaRouter.Router), _dec(_class = function () {
+    function AppHeader(router) {
+      _classCallCheck(this, AppHeader);
+
+      this.router = router;
+    }
+
+    AppHeader.prototype.attached = function attached() {};
+
+    return AppHeader;
+  }()) || _class);
+});
 define('contact/contact',['exports'], function (exports) {
   'use strict';
 
@@ -246,13 +274,12 @@ define('contact/contact',['exports'], function (exports) {
     return Contact;
   }();
 });
-define('app-header/app-header',['exports', 'aurelia-framework', 'aurelia-router'], function (exports, _aureliaFramework, _aureliaRouter) {
+define('faq/faq',['exports'], function (exports) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.AppHeader = undefined;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -260,19 +287,33 @@ define('app-header/app-header',['exports', 'aurelia-framework', 'aurelia-router'
     }
   }
 
-  var _dec, _class;
+  var Faq = exports.Faq = function () {
+    function Faq() {
+      _classCallCheck(this, Faq);
 
-  var AppHeader = exports.AppHeader = (_dec = (0, _aureliaFramework.inject)(_aureliaRouter.Router), _dec(_class = function () {
-    function AppHeader(router) {
-      _classCallCheck(this, AppHeader);
-
-      this.router = router;
+      this.model = {};
     }
 
-    AppHeader.prototype.attached = function attached() {};
+    Faq.prototype.attached = function attached() {};
 
-    return AppHeader;
-  }()) || _class);
+    Faq.prototype.submit = function submit() {
+      this.submitted = true;
+      var query = this.model;
+      $.ajax({
+        url: '/contact/query',
+        method: 'POST',
+        data: query,
+        success: function success(data) {
+          alert('Your query has been submitted.');
+        },
+        error: function error(err) {
+          console.log(err);
+        }
+      });
+    };
+
+    return Faq;
+  }();
 });
 define('home/home',['exports'], function (exports) {
   'use strict';
@@ -323,47 +364,6 @@ define('home/home',['exports'], function (exports) {
     };
 
     return Home;
-  }();
-});
-define('faq/faq',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var Faq = exports.Faq = function () {
-    function Faq() {
-      _classCallCheck(this, Faq);
-
-      this.model = {};
-    }
-
-    Faq.prototype.attached = function attached() {};
-
-    Faq.prototype.submit = function submit() {
-      this.submitted = true;
-      var query = this.model;
-      $.ajax({
-        url: '/contact/query',
-        method: 'POST',
-        data: query,
-        success: function success(data) {
-          alert('Your query has been submitted.');
-        },
-        error: function error(err) {
-          console.log(err);
-        }
-      });
-    };
-
-    return Faq;
   }();
 });
 define('policy/policy',["exports"], function (exports) {
