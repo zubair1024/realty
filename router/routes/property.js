@@ -249,7 +249,7 @@ const sendLeadMail = function (property) {
                 
                 </html>` ,
                 "subject": `New Lead - ${property.location.address}`,
-                "email": query.email,
+                "email": property.contact.email,
                 "priority": 1,
                 "status": 2
             },
