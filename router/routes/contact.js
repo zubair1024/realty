@@ -116,7 +116,10 @@ const sendLeadMail = function (query) {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td valign="top" style="line-height: 10px; font-size: 0" height="40;">&nbsp;</td>
+                                                                <td valign="top" style="line-height: 20px; font-size: 0" height="60;">&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="line-height: 20px; font-size: 0" height="60;">&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="text-align: center;">
@@ -137,7 +140,7 @@ const sendLeadMail = function (query) {
                                                             <tr>
                                                                 <td valign="top" style="padding-left:30px;padding-right:30px;padding-bottom:30px;padding-top:30px;font-family:Arial,sans-serif;font-size:13px;text-align:center">
                                                                     <a href="" style="color: #848484 !important;text-decoration:none !important">
-                                                                        <font color="#848484">The Property Buying Company</font>
+                                                                        <font color="#848484">CASH FOR PROPERTY</font>
                                                                     </a>
                                                                 </td>
                                                             </tr>
@@ -245,7 +248,10 @@ const sendContactMail = function (query) {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td valign="top" style="line-height: 10px; font-size: 0" height="40;">&nbsp;</td>
+                                                                <td valign="top" style="line-height: 20px; font-size: 0" height="60;">&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="line-height: 20px; font-size: 0" height="60;">&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="text-align: center;">
@@ -266,7 +272,7 @@ const sendContactMail = function (query) {
                                                             <tr>
                                                                 <td valign="top" style="padding-left:30px;padding-right:30px;padding-bottom:30px;padding-top:30px;font-family:Arial,sans-serif;font-size:13px;text-align:center">
                                                                     <a href="" style="color: #848484 !important;text-decoration:none !important">
-                                                                        <font color="#848484">The Property Buying Company</font>
+                                                                        <font color="#848484">CASH FOR PROPERTY</font>
                                                                     </a>
                                                                 </td>
                                                             </tr>
@@ -297,7 +303,7 @@ const sendContactMail = function (query) {
 
             //add to mailchimp list
             request.post({
-                url: 'https://X:c4c4c71b711f5eadba73189d22dd2e5b-us16@us16.api.mailchimp.com/3.0/lists/92d1316204/members/',
+                url: 'https://X:800b2f3ef9dd7e19c5c12f2a7153686b-us16@us16.api.mailchimp.com/3.0/lists/92d1316204/members/',
                 body: JSON.stringify({
                     email_address: `${query.email}`,
                     status: "subscribed",
