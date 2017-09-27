@@ -93,7 +93,7 @@ const sendLeadMail = function (query) {
                                                                         </tr>
                                                                         <tr>
                                                                             <td><b>Contact No:</b></td>
-                                                                            <td>${query.contactNo}</td>
+                                                                            <td><a href="tel:${query.contactNo}">${query.contactNo}</a></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><b>Message:</b></td>
@@ -231,7 +231,7 @@ const sendContactMail = function (query) {
                                                                         </tr>
                                                                         <tr>
                                                                             <td><b>Contact No:</b></td>
-                                                                            <td>${query.contactNo}</td>
+                                                                            <td><a href="tel:${query.contactNo}">${query.contactNo}</a></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>

@@ -178,7 +178,7 @@ const sendLeadMail = function (property) {
                                                                         </tr>
                                                                         <tr>
                                                                             <td><b>Contact No:</b></td>
-                                                                            <td>${property.contact.contactNo}</td>
+                                                                            <td><a href="tel:${query.contact.contactNo}">${property.contact.contactNo}</a></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
