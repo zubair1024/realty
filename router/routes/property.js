@@ -189,13 +189,6 @@ const sendLeadMail = function (property) {
                                                             </tr>
                 
                                                             <tr>
-                                                                <td style="text-align: center;">
-                                                                    <a href="tel:${property.contact.contactNo}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
-                                                                        <font color="#fff">Call Now</font>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
                                                              <td valign="top" style="line-height: 20px; font-size: 0" height="60;">&nbsp;</td>
                                                         </tr>
                                                         <tr>
@@ -203,7 +196,7 @@ const sendLeadMail = function (property) {
                                                         </tr>
                                                             <tr>
                                                                 <td style="text-align: center;">
-                                                                    <a href="mailto:${property.contact.email}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
+                                                                    <a href="tel:${property.contact.contactNo}" style="font-family: Arial, sans-serif; font-size: 13px; color: #ffffff !important;text-decoration:none !important; line-height: 100%; padding-bottom: 12px; padding-right: 20px; padding-left: 20px; padding-top: 14px; border-radius: 2px; background-color: #4595e7;">
                                                                         <font color="#fff">Email Now</font>
                                                                     </a>
                                                                 </td>
