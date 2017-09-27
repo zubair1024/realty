@@ -120,6 +120,10 @@ const sendLeadMail = function (property) {
                                                                             <td>${property.information.title}</td>
                                                                         </tr>
                                                                         <tr>
+                                                                            <td><b>Expected Price:</b></td>
+                                                                            <td>${property.information.expectedPrice}</td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td><b>Description:</b></td>
                                                                             <td>${property.information.description}</td>
                                                                         </tr>

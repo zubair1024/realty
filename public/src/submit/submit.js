@@ -109,6 +109,11 @@ export class Submit {
               if (!this.model.information.description || this.model.information.description === '') {
                 valid = false;
                 alert('Please fill in the Description field');
+              } else {
+                if (!this.model.information.expectedPrice || this.model.information.expectedPrice === '') {
+                  valid = false;
+                  alert('Please fill in the Expected Price field');
+                }
               }
             }
           }
