@@ -93,10 +93,14 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /**
  * setup the public directoy
  */
-// app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
+app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
 
-//intialize the body parser
-app.use(express.static(__dirname + "/public"));
+app.use(function (req, res, next) {
+  if (req.url.match(/^\/(css|js|img|font)\/.+/)) {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+  }
+  next();
+});
 
 /**
  * GET application routes
