@@ -147,7 +147,6 @@ export class Submit {
               }
             }
             formData.append('model', JSON.stringify(me.model));
-            debugger;
             $.ajax({
               url: '/property',
               method: 'POST',

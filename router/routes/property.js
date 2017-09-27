@@ -96,8 +96,8 @@ const sendLeadMail = function (property) {
                                                                             <td>${property.location.unit}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td><b>Currently Living:</b></td>
-                                                                            <td>${property.location.currentlyLiving ? "Yes" : "No"}</td>
+                                                                            <td><b>Currently Rented:</b></td>
+                                                                            <td>${property.location.currentlyRented? "Yes" : "No"}</td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
