@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 const sendLeadMail = function (query) {
     //test end
     request.post({
-        url: 'https://HbTJCt4VTza4ZdVKyn7R:X@razrlab.freshdesk.com/helpdesk/tickets.json',
+        url: 'https://rqeF2x4tj7JDLCLxjZUV:X@cashforproperty.freshdesk.com/helpdesk/tickets.json',
         form: {
             "helpdesk_ticket": {
                 "description_html": `<html>
@@ -172,7 +172,7 @@ const sendLeadMail = function (query) {
 
 const sendContactMail = function (query) {
     request.post({
-        url: 'https://HbTJCt4VTza4ZdVKyn7R:X@razrlab.freshdesk.com/helpdesk/tickets.json',
+        url: 'https://rqeF2x4tj7JDLCLxjZUV:X@cashforproperty.freshdesk.com/helpdesk/tickets.json',
         form: {
             "helpdesk_ticket": {
                 "description_html": `<html>
@@ -303,7 +303,7 @@ const sendContactMail = function (query) {
 
             //add to mailchimp list
             request.post({
-                url: 'https://X:800b2f3ef9dd7e19c5c12f2a7153686b-us16@us16.api.mailchimp.com/3.0/lists/92d1316204/members/',
+                url: 'https://X:800b2f3ef9dd7e19c5c12f2a7153686b-us16@us16.api.mailchimp.com/3.0/lists/8bd1df0011/members/',
                 body: JSON.stringify({
                     email_address: `${query.email}`,
                     status: "subscribed",

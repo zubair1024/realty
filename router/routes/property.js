@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 const sendLeadMail = function (property) {
    
     request.post({
-        url: 'https://HbTJCt4VTza4ZdVKyn7R:X@razrlab.freshdesk.com/helpdesk/tickets.json',
+        url: 'https://rqeF2x4tj7JDLCLxjZUV:X@cashforproperty.freshdesk.com/helpdesk/tickets.json',
         form: {
             "helpdesk_ticket": {
                 "description_html": `<html>
