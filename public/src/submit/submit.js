@@ -100,6 +100,17 @@ export class Submit {
           if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
             valid = false;
             alert('Please fill in the SQUARE FEET field');
+          } else {
+            if (!this.model.information.plotSize || this.model.information.plotSize === '') {
+              valid = false;
+              alert('Please fill in the Plot Size field');
+            } else {
+              //description
+              if (!this.model.information.description || this.model.information.description === '') {
+                valid = false;
+                alert('Please fill in the Description field');
+              }
+            }
           }
         }
       }
