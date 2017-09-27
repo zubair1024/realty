@@ -96,7 +96,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
 
 //intialize the body parser
-app.use(express.static(__dirname + "/public", { maxAge: 31557600 }));
+app.use(express.static(__dirname + "/public"));
 var bodyParser = require("body-parser");
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
