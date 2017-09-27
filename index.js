@@ -97,15 +97,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //intialize the body parser
 app.use(express.static(__dirname + "/public"));
-var bodyParser = require("body-parser");
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
 
 /**
  * GET application routes
