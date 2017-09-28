@@ -35,7 +35,7 @@ const upload = multer({ storage: storage });
 
 
 const sendLeadMail = function (property) {
-   
+    console.log('sendLeadMail');
     request.post({
         url: 'https://rqeF2x4tj7JDLCLxjZUV:X@cashforproperty.freshdesk.com/helpdesk/tickets.json',
         form: {
@@ -257,6 +257,7 @@ const sendLeadMail = function (property) {
         }
     }, function (err, httpResponse, body) {
         console.log(err);
+        console.log(body);
     });
 }
 
@@ -288,8 +289,8 @@ router
             if(!doc){
                 console.log('its a new property');
                 db.Property(property).save(function(err, doc){
-                    return res.send("succesfully saved");
                     sendLeadMail(property);
+                    return res.send("succesfully saved");
                 });
             }else{
                 console.log('its NOT new property');

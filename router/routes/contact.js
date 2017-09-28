@@ -164,6 +164,7 @@ const sendLeadMail = function (query) {
 }
 
 const sendContactMail = function (query) {
+    console.log('sendContactMail');
     request.post({
         url: 'https://rqeF2x4tj7JDLCLxjZUV:X@cashforproperty.freshdesk.com/helpdesk/tickets.json',
         form: {
@@ -333,14 +334,19 @@ router
             db.Contact.findOne({
                 "email": req.body.email,
                 "contactNo": req.body.contactNo
-            },function (err, doc) {
-                if(!doc){
+            }, function (err, doc) {
+                if (!doc) {
                     console.log('its a new contact');
-                    db.Contact(req.body).save(function(err, doc){
+                    db.Contact(req.body).save(function (err, doc) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('saved new contact');
+                        sendContactMail(doc);
                         return res.send("succesfully saved");
-                        sendContactMail(req.body);
+
                     });
-                }else{
+                } else {
                     console.log('its NOT a new contact');
                     return res.send("succesfully saved");
                 }
