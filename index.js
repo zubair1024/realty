@@ -26,6 +26,7 @@ http.globalAgent.maxSockets = Infinity;
 // GZIP all assets
 app.use(compression());
 
+//check 
 app.use(function (req, res, next) {
   agent = req.headers['user-agent'];
   if (agent.indexOf('Safari') > -1 && agent.indexOf('Chrome') == -1 && agent.indexOf('OPR') == -1) {

@@ -26,8 +26,9 @@
 
                             <form class="card__body">
                                 <div class="form-group form-group--float form-group--float-center">Full Name
-                                    <input type="text" class="form-control text-center" value.bind="model.contact.name">
+                                    <input type="text" class="form-control text-center" value.bind="model.contact.name" required>
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.contact.name">Please enter a valid name</div>
                                 </div>
 
                                 <div class="form-group form-group--float form-group--float-center">Organization Name (Opt.)
@@ -38,14 +39,16 @@
                                 <div class="form-group form-group--float form-group--float-center m-b-5">Email Address
                                     <input type="text" class="form-control text-center" value.bind="model.contact.email">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.contact.email">Please enter a valid email</div>
                                 </div>
 
                                 <div class="form-group form-group--float form-group--float-center">Contact Number [xxx-xxxx-xxx]
                                     <input type="text" class="form-control text-center" value.bind="model.contact.contactNo">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.contact.contactNo">Please enter a valid contactNo</div>
                                 </div>
 
-                                <a data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" click.delegate="validateStep(2)">
+                                <a data-toggle="tab" class="btn btn--circle btn-primary submit-property__button"  click.delegate="validateContact()">
                                         <i class="zmdi zmdi-long-arrow-right"></i>
                                     </a>
                             </form>
@@ -66,6 +69,7 @@
                                     Area and Community
                                     <input type="text" class="form-control text-center" value.bind="model.location.address">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.location.address">Please enter a valid value</div>
                                 </div>
 
                                   <div class="form-group">
@@ -82,6 +86,7 @@
                                     Unit/Floor/Block
                                     <input type="text" class="form-control text-center" value.bind="model.location.unit">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown"  show.bind="validation.location.unit">Please enter a valid value</div>
                                 </div>
 
                                 <div class="form-group">
@@ -99,28 +104,33 @@
                                 <div class="form-group form-group--float form-group--float-center">Title Deed Number
                                     <input type="text" class="form-control text-center" value.bind="model.information.title">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.title">Please enter a valid value</div>
                                 </div>
 
                                 <div class="form-group form-group--float form-group--float-center">View
                                     <textarea class="form-control text-center textarea-autoheight" value.bind="model.information.view"></textarea>
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.view">Please enter a valid value</div>
                                 </div>
 
 
                                 <div class="form-group form-group--float form-group--float-center">Square Feet
-                                    <input type="text" class="form-control text-center" value.bind="model.information.squareFeet">
+                                    <input type="numeric" class="form-control text-center" value.bind="model.information.squareFeet">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.squareFeet">Please enter a valid value</div>
                                 </div>
                                 
                                 <div class="form-group form-group--float form-group--float-center">Plot Size (if applicable)
                                     <input type="text" class="form-control text-center" value.bind="model.information.plotSize">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.plotSize">Please enter a valid value</div>
                                 </div>
 
                                 <div class="form-group form-group--float m-b-5">Description<br>
                                     <small><i>For example: Pool included, well maintained garden etc.</i></small>
                                     <input type="text" class="form-control text-center textarea-autoheight" value.bind="model.information.description">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.description">Please enter a valid value</div>
                                 </div>
 
                                 <div class="form-group">
@@ -207,6 +217,7 @@
                                 <div class="form-group form-group--float form-group--float-center">Expected Price
                                     <input type="text" class="form-control text-center" value.bind="model.information.expectedPrice">
                                     <i class="form-group__bar"></i>
+                                    <div style="color:brown" show.bind="validation.information.expectedPrice">Please enter a valid value</div>
                                 </div>
                                  <div class="form-group">
                                     <div class="checkbox">
@@ -217,7 +228,7 @@
                                             </label>
                                     </div>
                                 </div>
-                                <button data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" disabled.bind="!tncCheck || submitted"  click.delegate="finalValidationAnSubmit(images)" >
+                                <button data-toggle="tab" class="btn btn--circle btn-primary submit-property__button" disabled.bind="!tncCheck || submitted"  click.delegate="validateInformation(images)" >
                                         <i class="zmdi zmdi-check"></i>
                                     </button>
                             </form>

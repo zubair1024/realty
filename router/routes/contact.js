@@ -330,19 +330,20 @@ router
     })
     .post('/info', function (req, res) {
         if (req.body) {
-            //persist the information
-            // db.Contact.findOneAndUpdate({
-            //     "name": req.body.name,
-            //     "contactNo": req.body.contactNo
-            // },
-            //     req.body,
-            //     { upsert: true }, function (err, doc) {
-            //         if (!doc) {
-            //             sendContactMail(req.body);
-            //         }
-            //         return res.send("succesfully saved");
-            //     });
-            sendContactMail(req.body);
+            db.Contact.findOne({
+                "email": req.body.email,
+                "contactNo": req.body.contactNo
+            },function (err, doc) {
+                if(!doc){
+                    console.log('its a new contact');
+                    db.Contact(req.body).save(function(err, doc){
+                        return res.send("succesfully saved");
+                        sendContactMail(req.body);
+                    });
+                }else{
+                    return res.send("succesfully saved");
+                }
+            });
         }
     })
 

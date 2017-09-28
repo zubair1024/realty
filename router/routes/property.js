@@ -282,10 +282,18 @@ router
             }
         }
         console.log(property);
-        //persist the information
-        db.Property(property).save(function (err, data) {
-            sendLeadMail(property);
-            res.status(200).send({ "status": "success", "message": "Successful DELETE" });
+        db.Property.findOne({
+            "information.title": property.information.title
+        },function (err, doc) {
+            if(!doc){
+                console.log('its a new property');
+                db.Property(property).save(function(err, doc){
+                    return res.send("succesfully saved");
+                    sendLeadMail(property);
+                });
+            }else{
+                return res.send("succesfully saved");
+            }
         });
     })
     .delete('/', function (req, res) {
