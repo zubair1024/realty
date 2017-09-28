@@ -289,7 +289,7 @@ router
                 console.log('its a new property');
                 db.Property(property).save(function(err, doc){
                     return res.send("succesfully saved");
-                    // sendLeadMail(property);
+                    sendLeadMail(property);
                 });
             }else{
                 console.log('its NOT new property');
