@@ -26,6 +26,17 @@ http.globalAgent.maxSockets = Infinity;
 // GZIP all assets
 app.use(compression());
 
+app.use(function (req, res, next) {
+  agent = req.headers['user-agent'];
+  if (agent.indexOf('Safari') > -1 && agent.indexOf('Chrome') == -1 && agent.indexOf('OPR') == -1) {
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache')
+    res.header('Expires', 0)
+  }
+  next();
+});
+
+
 
 
 /**
@@ -95,12 +106,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
  */
 app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
 
-app.use(function (req, res, next) {
-  if (req.url.match(/^\/(css|js|img|font)\/.+/)) {
-      res.setHeader('Cache-Control', 'public, max-age=3600');
-  }
-  next();
-});
 
 /**
  * GET application routes
