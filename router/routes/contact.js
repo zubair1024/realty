@@ -338,9 +338,10 @@ router
                     console.log('its a new contact');
                     db.Contact(req.body).save(function(err, doc){
                         return res.send("succesfully saved");
-                        sendContactMail(req.body);
+                        // sendContactMail(req.body);
                     });
                 }else{
+                    console.log('its NOT a new contact');
                     return res.send("succesfully saved");
                 }
             });
