@@ -25,28 +25,33 @@
                             </div>
 
                             <form class="card__body">
-                                <div class="form-group form-group--float form-group--float-center">Full Name
+                                <div class="form-group form-group--float form-group--float-center">Full Name <span style="color: red">*</span>
                                     <input type="text" class="form-control text-center" value.bind="model.contact.name" required>
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.contact.name">Please enter a valid name</div>
                                 </div>
 
-                                <div class="form-group form-group--float form-group--float-center">Organization Name (Opt.)
+                                <div class="form-group form-group--float form-group--float-center">Organization Name (optimal) <span style="color: red">*</span>
                                     <input type="text" class="form-control text-center" value.bind="model.contact.organization">
                                     <i class="form-group__bar"></i>
                                 </div>
 
-                                <div class="form-group form-group--float form-group--float-center m-b-5">Email Address
+                                <div class="form-group form-group--float form-group--float-center m-b-5">Email Address <span style="color: red">*</span>
                                     <input type="text" class="form-control text-center" value.bind="model.contact.email">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.contact.email">Please enter a valid email</div>
                                 </div>
 
-                                <div class="form-group form-group--float form-group--float-center">Contact Number [+971XXXXXXXXX]
+                                <div class="form-group form-group--float form-group--float-center">Contact Number [+971XXXXXXXXX] <span style="color: red">*</span>
                                     <input type="text" class="form-control text-center" value.bind="model.contact.contactNo">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.contact.contactNo">Please enter a valid contactNo</div>
                                 </div>
+
+                                <div class="form-group form-group--float form-group--float-center">
+                                    <i><span style="color: red">*</span> required</i>
+                                </div>
+
 
                                 <a data-toggle="tab" class="btn btn--circle btn-primary submit-property__button"  click.delegate="validateContact()">
                                         <i class="zmdi zmdi-long-arrow-right"></i>
@@ -66,16 +71,17 @@
 
 
                                    <div class="form-group form-group--float m-b-5">
-                                    Area and Community
+                                    Area and Community (optional)
                                     <input type="text" class="form-control text-center" value.bind="model.location.address">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.location.address">Please enter a valid value</div>
                                 </div>
 
                                   <div class="form-group">
-                                    <label>Property Type</label>
+                                    <label>Property Type (optional)</label>
 
                                     <select class="select2" value.bind="model.information.type">
+                                            <option value="apartment">-</option>
                                             <option value="apartment">Apartment</option>
                                             <option value="townhouse">Townhouse</option>
                                             <option value="villa">Villa</option>
@@ -83,7 +89,7 @@
                                 </div>
 
                                 <div class="form-group form-group--float m-b-5">
-                                    Unit/Floor/Block
+                                    Unit/Floor/Block  (optional)
                                     <input type="text" class="form-control text-center" value.bind="model.location.unit">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown"  show.bind="validation.location.unit">Please enter a valid value</div>
@@ -101,32 +107,32 @@
 
                               
 
-                                <div class="form-group form-group--float form-group--float-center">Title Deed Number
+                                <div class="form-group form-group--float form-group--float-center">Title Deed Number (optional)
                                     <input type="text" class="form-control text-center" value.bind="model.information.title">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.information.title">Please enter a valid value</div>
                                 </div>
 
-                                <div class="form-group form-group--float form-group--float-center">View
+                                <div class="form-group form-group--float form-group--float-center">View (optional)
                                     <textarea class="form-control text-center textarea-autoheight" value.bind="model.information.view"></textarea>
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.information.view">Please enter a valid value</div>
                                 </div>
 
 
-                                <div class="form-group form-group--float form-group--float-center">Square Feet
+                                <div class="form-group form-group--float form-group--float-center">Square Feet (optional)
                                     <input type="numeric" class="form-control text-center" value.bind="model.information.squareFeet">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.information.squareFeet">Please enter a valid value</div>
                                 </div>
                                 
-                                <div class="form-group form-group--float form-group--float-center">Plot Size (if applicable)
+                                <div class="form-group form-group--float form-group--float-center">Plot Size (if applicable) (optional)
                                     <input type="text" class="form-control text-center" value.bind="model.information.plotSize">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.information.plotSize">Please enter a valid value</div>
                                 </div>
 
-                                <div class="form-group form-group--float m-b-5">Description<br>
+                                <div class="form-group form-group--float m-b-5">Description (optional)<br>
                                     <small><i>For example: Pool included, well maintained garden etc.</i></small>
                                     <input type="text" class="form-control text-center textarea-autoheight" value.bind="model.information.description">
                                     <i class="form-group__bar"></i>
@@ -134,9 +140,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Bedrooms</label>
+                                    <label>Bedrooms (optional)</label>
                                     <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                        <label class="btn active" click.delegate="toggleBathrooms('1')">
+                                        <label class="btn active" click.delegate="toggleBathrooms('-')">
+                                                <input type="radio" name="inner-search-beds">-
+                                            </label>
+                                        <label class="btn" click.delegate="toggleBathrooms('1')">
                                                 <input type="radio" name="inner-search-beds">1
                                             </label>
                                         <label class="btn" click.delegate="toggleBathrooms('2')">
@@ -155,9 +164,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Bathrooms</label>
+                                    <label>Bathrooms (optional)</label>
                                     <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                        <label class="btn active" click.delegate="toggleBathrooms('1')">
+                                        <label class="btn active" click.delegate="toggleBathrooms('-')">
+                                                <input type="radio" name="inner-search-beds">-
+                                            </label>
+                                        <label class="btn" click.delegate="toggleBathrooms('1')">
                                                 <input type="radio" name="inner-search-beds">1
                                             </label>
                                         <label class="btn" click.delegate="toggleBathrooms('2')">
@@ -176,9 +188,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Parking Space</label>
+                                    <label>Parking Space (optional)</label>
                                     <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                        <label class="btn active" click.delegate="toggleParkingSpaces('1')">
+                                        <label class="btn active" click.delegate="toggleParkingSpaces('-')">
+                                                <input type="radio" name="inner-search-beds">-
+                                            </label>
+                                        <label class="btn" click.delegate="toggleParkingSpaces('1')">
                                                 <input type="radio" name="inner-search-beds">1
                                             </label>
                                         <label class="btn " click.delegate="toggleParkingSpaces('2')">
@@ -192,7 +207,7 @@
                                             </label>
                                     </div>
                                 </div>
-                                <div class="form-group form-group--float form-group--float-center">Property Deed (jpg/png)
+                                <div class="form-group form-group--float form-group--float-center">Property Deed (jpg/png) (optional)
                                     <input type="file" accept="image/*" files.bind="deed">
                                     <i class="form-group__bar"></i>
                                 </div>
@@ -203,7 +218,7 @@
                                         <!-- Last Modified: ${file.lastModifiedDate} -->
                                     </li>
                                 </ul>
-                                <div class="form-group form-group--float form-group--float-center">Property Images (jpg/png)
+                                <div class="form-group form-group--float form-group--float-center">Property Images (jpg/png) (optional)
                                     <input type="file" multiple accept="image/*" files.bind="selectedFiles">
                                     <i class="form-group__bar"></i>
                                 </div>
@@ -214,7 +229,7 @@
                                         <!-- Last Modified: ${file.lastModifiedDate} -->
                                     </li>
                                 </ul>
-                                <div class="form-group form-group--float form-group--float-center">Expected Price
+                                <div class="form-group form-group--float form-group--float-center">Expected Price (optional)
                                     <input type="text" class="form-control text-center" value.bind="model.information.expectedPrice">
                                     <i class="form-group__bar"></i>
                                     <div style="color:brown" show.bind="validation.information.expectedPrice">Please enter a valid value</div>

@@ -4,10 +4,10 @@ export class Submit {
     location: {},
     contact: {},
     information: {
-      type: 'apartment',
-      bedrooms: '1',
-      bathrooms: '1',
-      parkingSpaces: '1'
+      type: '-',
+      bedrooms: '-',
+      bathrooms: '-',
+      parkingSpaces: '-'
     }
   }
 
@@ -88,10 +88,10 @@ export class Submit {
           url: '/contact/info',
           method: 'POST',
           data: me.model.contact,
-          success: function (data) {
+          success: function(data) {
             console.log('data');
           },
-          error: function (err) {
+          error: function(err) {
             console.log(err);
           }
         });
@@ -112,66 +112,66 @@ export class Submit {
     this.validation.information.view = false;
     this.validation.information.squareFeet = false;
     this.validation.information.expectedPrice = false;
-  
+
     //address
-    if (!this.model.location.address || this.model.location.address === '') {
-      valid = false;
-      this.validation.location.address = true;
-    }
+    // if (!this.model.location.address || this.model.location.address === '') {
+    //   valid = false;
+    //   this.validation.location.address = true;
+    // }
 
 
     //unit
-    if (!this.model.location.unit || this.model.location.unit === '') {
-      valid = false;
-      this.validation.location.unit = true;
-    }
+    // if (!this.model.location.unit || this.model.location.unit === '') {
+    //   valid = false;
+    //   this.validation.location.unit = true;
+    // }
 
 
     //title
-    if (!this.model.information.title || this.model.information.title === '') {
-      valid = false;
-      this.validation.information.title = true;
-    }
+    // if (!this.model.information.title || this.model.information.title === '') {
+    //   valid = false;
+    //   this.validation.information.title = true;
+    // }
 
 
     //view
-    if (!this.model.information.view || this.model.information.view === '') {
-      valid = false;
-      this.validation.information.view = true;
-    }
+    // if (!this.model.information.view || this.model.information.view === '') {
+    //   valid = false;
+    //   this.validation.information.view = true;
+    // }
 
 
-    //squareFeet
-    if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
-      valid = false;
-      this.validation.information.squareFeet = true;
-    }else{
-      let regex = /^[0-9]*$/;
-      if (!this.model.information.squareFeet.match(regex)) {
-        valid = false;
-        this.validation.information.squareFeet = true;
-      }
-    }
+    // //squareFeet
+    // if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
+    //   valid = false;
+    //   this.validation.information.squareFeet = true;
+    // } else {
+    //   let regex = /^[0-9]*$/;
+    //   if (!this.model.information.squareFeet.match(regex)) {
+    //     valid = false;
+    //     this.validation.information.squareFeet = true;
+    //   }
+    // }
 
 
-    //description
-    if (!this.model.information.description || this.model.information.description === '') {
-      valid = false;
-      this.validation.information.description = true;
-    }
+    // //description
+    // if (!this.model.information.description || this.model.information.description === '') {
+    //   valid = false;
+    //   this.validation.information.description = true;
+    // }
 
 
-    //expectedPrice
-    if (!this.model.information.expectedPrice || this.model.information.expectedPrice === '') {
-      valid = false;
-      this.validation.information.expectedPrice = true;
-    }else{
-      let regex = /^[0-9]*$/;
-      if (!this.model.information.expectedPrice.match(regex)) {
-        valid = false;
-        this.validation.information.expectedPrice = true;
-      }
-    }
+    // //expectedPrice
+    // if (!this.model.information.expectedPrice || this.model.information.expectedPrice === '') {
+    //   valid = false;
+    //   this.validation.information.expectedPrice = true;
+    // } else {
+    //   let regex = /^[0-9]*$/;
+    //   if (!this.model.information.expectedPrice.match(regex)) {
+    //     valid = false;
+    //     this.validation.information.expectedPrice = true;
+    //   }
+    // }
 
     if (valid) {
       //neeed to do something aboutt the images before doing this
@@ -191,10 +191,10 @@ export class Submit {
         data: formData,
         contentType: false,
         processData: false,
-        success: function (data) {
+        success: function(data) {
           $('#submitted').tab('show');
         },
-        error: function (err) {
+        error: function(err) {
           console.log(err);
         }
       });
@@ -207,98 +207,99 @@ export class Submit {
     let valid = true;
     switch (step) {
       //location information
-      case 1:
-        if (!this.model.location.address || this.model.location.address === '') {
-          valid = false;
-          alert('Please fill in the ADDRESS field');
-        } else {
-          if (!this.model.location.unit || this.model.location.unit === '') {
-            valid = false;
-            alert('Please fill in the UNIT field');
-          } else {
-            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
-          }
-        }
-        break;
+    case 1:
+        //not mandatory fields
+        // if (!this.model.location.address || this.model.location.address === '') {
+        //   valid = false;
+        //   alert('Please fill in the ADDRESS field');
+        // } else {
+        //   if (!this.model.location.unit || this.model.location.unit === '') {
+        //     valid = false;
+        //     alert('Please fill in the UNIT field');
+        //   } else {
+        //     !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
+        //   }
+        // }
+      break;
       //contact information
-      case 2:
-        if (!this.model.contact.name || this.model.contact.name === '') {
-          valid = false;
-          alert('Please fill in the NAME field');
-        } else if (!this.model.contact.email || this.model.contact.email === '') {
-          valid = false;
-          alert('Please fill in a valid EMAIL address');
-        } else if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
-          valid = false;
-          alert('Please fill in the CONTACT NUMBER field');
-        } else {
+    case 2:
+      if (!this.model.contact.name || this.model.contact.name === '') {
+        valid = false;
+        alert('Please fill in the NAME field');
+      } else if (!this.model.contact.email || this.model.contact.email === '') {
+        valid = false;
+        alert('Please fill in a valid EMAIL address');
+      } else if (!this.model.contact.contactNo || this.model.contact.contactNo === '') {
+        valid = false;
+        alert('Please fill in the CONTACT NUMBER field');
+      } else {
           //validate email
-          let atpos = this.model.contact.email.indexOf('@');
-          let dotpos = this.model.contact.email.lastIndexOf('.');
+        let atpos = this.model.contact.email.indexOf('@');
+        let dotpos = this.model.contact.email.lastIndexOf('.');
           //check the @ and . positions
-          if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= this.model.contact.email.length) {
-            alert('Please fill in a valid EMAIL address');
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= this.model.contact.email.length) {
+          alert('Please fill in a valid EMAIL address');
+        } else {
+          let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+          if (!this.model.contact.contactNo.match(phoneno)) {
+            alert('Please enter a valid contact number');
           } else {
-            let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-            if (!this.model.contact.contactNo.match(phoneno)) {
-              alert('Please enter a valid contact number');
-            } else {
               //send the contact discreetly
-              if (!me.contactSubmitted) {
+            if (!me.contactSubmitted) {
                 me.contactSubmitted = true;
                 $.ajax({
                   url: '/contact/info',
                   method: 'POST',
                   data: me.model.contact,
-                  success: function (data) {
+                  success: function(data) {
                     console.log('data');
                   },
-                  error: function (err) {
+                  error: function(err) {
                     console.log(err);
                   }
                 });
               }
-              !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
-            }
+            !callback && $('.submit-property__steps a[href="#submit-property-2"]').tab('show');
           }
         }
-        break;
+      }
+      break;
       //property information
-      case 3:
-        if (!this.model.information.title || this.model.information.title === '') {
-          valid = false;
-          alert('Please fill in the TITLE field');
-        } else {
-          if (!this.model.information.view || this.model.information.view === '') {
-            valid = false;
-            alert('Please fill in the VIEW field');
-          } else {
-            if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
-              valid = false;
-              alert('Please fill in the SQUARE FEET field');
-            } else {
-              if (!this.model.information.plotSize || this.model.information.plotSize === '') {
-                valid = false;
-                alert('Please fill in the Plot Size field');
-              } else {
-                //description
-                if (!this.model.information.description || this.model.information.description === '') {
-                  valid = false;
-                  alert('Please fill in the Description field');
-                } else {
-                  if (!this.model.information.expectedPrice || this.model.information.expectedPrice === '') {
-                    valid = false;
-                    alert('Please fill in the Expected Price field');
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
-      default:
+    case 3:
+      // if (!this.model.information.title || this.model.information.title === '') {
+      //   valid = false;
+      //   alert('Please fill in the TITLE field');
+      // } else {
+      //   if (!this.model.information.view || this.model.information.view === '') {
+      //       valid = false;
+      //       alert('Please fill in the VIEW field');
+      //     } else {
+      //       if (!this.model.information.squareFeet || this.model.information.squareFeet === '') {
+      //         valid = false;
+      //         alert('Please fill in the SQUARE FEET field');
+      //       } else {
+      //         if (!this.model.information.plotSize || this.model.information.plotSize === '') {
+      //           valid = false;
+      //           alert('Please fill in the Plot Size field');
+      //         } else {
+      //           //description
+      //           if (!this.model.information.description || this.model.information.description === '') {
+      //             valid = false;
+      //             alert('Please fill in the Description field');
+      //           } else {
+      //             if (!this.model.information.expectedPrice || this.model.information.expectedPrice === '') {
+      //               valid = false;
+      //               alert('Please fill in the Expected Price field');
+      //             }
+      //           }
+      //         }
+      //       }
+      //     }
+      // }
+      break;
+    default:
         //do nothing
-        break;
+      break;
     }
     callback && callback(valid);
   }
@@ -345,11 +346,11 @@ export class Submit {
               data: formData,
               contentType: false,
               processData: false,
-              success: function (data) {
+              success: function(data) {
                 console.log('data');
                 f3 && $('#submitted').tab('show');
               },
-              error: function (err) {
+              error: function(err) {
                 console.log(err);
               }
             });
