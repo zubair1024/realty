@@ -4,6 +4,7 @@ node_modules
 
 temp/*
 
+.env
 
 # Logs
 logs
@@ -45,6 +46,3 @@ jspm_packages
 .vscode
 
 !.gitignore
-
-
-

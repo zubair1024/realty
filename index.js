@@ -1,18 +1,20 @@
-const express = require('express'),
-  http = require('http'),
+require("dotenv").config();
+
+const express = require("express"),
+  http = require("http"),
   cors = require("cors"),
   compression = require("compression"),
   db = require("./db/db"),
   router = express.Router();
 
-global.config = require('./config');
+global.config = require("./config");
 
 //Intialize express application
 global.app = express();
 
 global.db = db;
 
-//Cloudinary API setup  
+//Cloudinary API setup
 // const cloudinary = require('cloudinary');
 // global.cloudinary = cloudinary.config({
 //   cloud_name: 'the-property-buying-company',
@@ -26,46 +28,44 @@ http.globalAgent.maxSockets = Infinity;
 // GZIP all assets
 app.use(compression());
 
-//check 
+//check
 app.use(function (req, res, next) {
-  agent = req.headers['user-agent'];
-  if (agent.indexOf('Safari') > -1 && agent.indexOf('Chrome') == -1 && agent.indexOf('OPR') == -1) {
-    console.log('Apple Fix');
-    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.header('Pragma', 'no-cache')
-    res.header('Expires', 0)
+  agent = req.headers["user-agent"];
+  if (
+    agent.indexOf("Safari") > -1 &&
+    agent.indexOf("Chrome") == -1 &&
+    agent.indexOf("OPR") == -1
+  ) {
+    console.log("Apple Fix");
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
   }
   next();
 });
 
-
-
-
 /**
  * Email Transporter
  */
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 // create reusable transporter object using the default SMTP transport
 global.transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
+  host: "smtp.gmail.com",
   port: 465,
   secure: true, // secure:true for port 465, secure:false for port 587
   auth: {
-    user: 'thepropertybuyingcompanyae@gmail.com',
-    pass: 'onlyvimal1'
-  }
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
+  },
 });
 
 /**
- * CORS setup 
+ * CORS setup
  */
 
 //allow cross-domain requests to server
-var originsWhitelist = [
-  "http://localhost:4200",
-  "http://localhost:9000"
-];
+var originsWhitelist = ["http://localhost:4200", "http://localhost:9000"];
 
 //cors options setup
 const corsOptions = {
@@ -73,7 +73,7 @@ const corsOptions = {
     var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
     callback(null, isWhitelisted);
   },
-  credentials: true
+  credentials: true,
 };
 //here is the magic
 app.use(cors(corsOptions));
@@ -95,7 +95,6 @@ app.use(function (req, res, next) {
   }
 });
 
-
 /**
  * Body parser middleware
  */
@@ -106,8 +105,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /**
  * setup the public directoy
  */
-app.use(express.static(__dirname + '/public', { maxAge: 31557600 }));
-
+app.use(express.static(__dirname + "/public", { maxAge: 31557600 }));
 
 /**
  * GET application routes
@@ -121,5 +119,5 @@ var routes = require("./router/router");
 db.checkConnection(() => {
   db.loadModels();
   http.createServer(app).listen(config.listener.ports.web);
-  console.log('Application is running on port ' + config.listener.ports.web);
+  console.log("Application is running on port " + config.listener.ports.web);
 });
